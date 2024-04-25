@@ -5,10 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cab23b05-0bfb-409b-b1aa-64cd328141e5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/home/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/music_city/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/music_city/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/account_inactive.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/account_inactive.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/email.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/email_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/email_confirm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/logout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/logout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/password_change.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/password_change.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/password_reset.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/password_reset.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/password_reset_done.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/password_reset_from_key.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/password_reset_from_key.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/password_reset_from_key_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/password_reset_from_key_done.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/password_set.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/password_set.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/signup_closed.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/signup_closed.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/verification_sent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/verification_sent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/verified_email_required.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/verified_email_required.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -184,7 +203,7 @@
       <workItem from="1713450143475" duration="715000" />
       <workItem from="1713450861935" duration="5116000" />
       <workItem from="1713804756016" duration="14024000" />
-      <workItem from="1713971850647" duration="637000" />
+      <workItem from="1713971850647" duration="8898000" />
     </task>
     <servers />
   </component>
