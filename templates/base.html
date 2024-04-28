@@ -36,13 +36,13 @@
         <header class="container-fluid fixed-top">
             <div id="topnav" class="row pt-lg-2 d-none d-lg-flex header-bg pb-2">
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-                    <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                    <a href="{% url 'home' %}" class="text-decoration-none main-logo-link">
                         <h2 class="logo-font text-black my-0">music city</h2>
                     </a>
                 </div>
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                     <form method="GET" action="">
-                        <div class="input-group w-100 search-bar">
+                        <div class="input-group d-flex align-items-center w-100 search-bar">
                             <input class="form-control border-0 " type="text" name="q" placeholder="Search for your instrument">
                             <div class="input-group-append">
                                 <button class="btn btn-secondary border-0 rounded-circle" type="submit">
@@ -52,16 +52,15 @@
                         </div>
                     </form>
                 </div>
-
-                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 pr-5 d-flex justify-content-end">
                     <ul class="list-inline list-unstyled text-center my-0">
                         <li class="list-inline-item dropdown">
-                            <a class="text-black nav-link btn btn-lg btn-secondary border-0 rounded-circle" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="text-black btn btn-lg btn-secondary border-0 rounded-circle" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="text-center">
                                     <div><i class="fas fa-user fa-lg"></i></div>
                                 </div>
                             </a>
-                            <div class="dropdown-menu bg-secondary border-0" aria-labelledby="user-options">
+                            <div class="dropdown-menu nav-dropdown border-0" aria-labelledby="user-options">
                                 {% if request.user.is_authenticated %}
                                     {% if request.user.is_superuser %}
                                         <a href="" class="dropdown-item">Product management</a>
@@ -75,7 +74,7 @@
                             </div>
                         </li>
                         <li class="list-inline-item">
-                            <a class="{% if grand_total %} text-info font-weight-bold{% else %}text-black{% endif %} nav-link btn btn-lg btn-secondary border-0 rounded-circle" href="">
+                            <a class="{% if grand_total %} text-info font-weight-bold{% else %}text-black{% endif %} btn btn-lg btn-secondary border-0 rounded-circle" href="">
                                 <div class="text-center">
                                     <div><i class="fa-solid fa-cart-shopping fa-lg"></i></div>
                                 </div>
@@ -83,6 +82,17 @@
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div class="row main-nav">
+                <nav class="navbar navbar-expand-lg w-100">
+                    <button class="btn-lg btn-secondary rounded border-0 d-lg-none" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon">
+                            <i class="fa-solid fa-bars"></i>
+                        </span>
+                    </button>
+                    {% include 'includes/mobile_top_header.html' %}
+                    {% include 'includes/main_nav.html' %}
+                </nav>
             </div>
 
         </header>

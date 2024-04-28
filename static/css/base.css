@@ -4,11 +4,8 @@ html {
 
 body {
     color: #555;
+    background-color: #999;
     font-family: 'Lato'; /* add a fallback font */
-}
-
-.content-area {
-    min-height: calc(100vh - 12.5rem); /* 164px - size of header */
 }
 
 /* from Bulma */
@@ -56,11 +53,12 @@ body {
 .btn-secondary {
     background-color: #333 !important;
     color: white !important;
+    padding: 1rem 1.3rem;
 }
 
 .btn-secondary:hover {
     background-color: #111 !important;
-    color: orange !important;
+    color: #e67300 !important;
 }
 
 .border-black {
@@ -69,15 +67,46 @@ body {
 
 .search-bar {
     background-color: white;
-    border: 1px solid black;
+    border: 2px solid #e67300;
     border-radius: 3rem;
     padding-left: 15px;
 }
 
 header {
-    height: 4.5rem;
+    height: 5.5rem;
     background-color: #e67300;
 }
+
+.nav-link {
+    color: #e67300;
+    /*padding: 1rem 1.3rem;*/
+}
+
+.nav-link:hover {
+    color: #fff;
+}
+
+.navbar-nav {
+    background-color: #333;
+    padding-left: 20px;
+}
+
+.nav-dropdown {
+    background-color: #333;
+    opacity: 0.8;
+}
+
+.dropdown-item {
+    color: #ccc;
+}
+
+.dropdown-item:hover{
+    background-color: #e67300;
+}
+
+.content-area {
+        min-height: calc(100vh - 8rem); /* 164px - size of header */
+    }
 
 footer {
     height: 8rem;
@@ -171,9 +200,12 @@ footer {
 /* MEDIA QUERIES */
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
-  .container {
+    .container {
     max-width: 80%;
   }
+    .content-area {
+        min-height: calc(100vh - 12.5rem); /* 164px - size of header */
+    }
 }
 
 /* fixed top navbar only on medium and up */
@@ -185,8 +217,22 @@ footer {
         left: 0;
         z-index: 1030;
     }
-
     .header-container {
         padding-top: 4.6rem;
     }
+    .main-nav {
+        background-color: #333;
+    }
+    .btn-secondary {
+        padding: .7rem 1rem;
+    }
+    .content-area {
+        min-height: calc(100vh - 12.5rem); /* 164px - size of header */
+    }
+    .search-bar {
+        border: 1px solid black;
+    }
+    /*.nav-link {*/
+    /*    padding: 1rem 1.3rem;*/
+    /*}*/
 }
