@@ -98,7 +98,9 @@
         </header>
 
         {% if messages %}
-            <div class="message-container"></div>
+            {% for message in messages %}
+                <div class="message-container bg-danger text-white text-center">{{ message }}</div>
+            {% endfor %}
         {% endif %}
 
         {% block page_header %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row text-center">
+            <div class="col">
+                <h2>Get your subscription!</h2>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            {% for subscription in subscriptions %}
+                <div class="col-lg col-md-6 col-sm-12 text-center">
+                    <div class="container subscription-container my-3 mx-xl-5 position-relative bg-white p-3">
+                        <div class="container-fluid overlay p-3{% if subscription.is_active %} d-none {% endif %}">
+                            <h3 class="text-white text-center bg-danger">INACTIVE</h3>
+                        </div>
+                        <div class="container-fluid">
+                            <h4>{{ subscription.name }}</h4>
+                            <p>{{ subscription.description}}</p>
+                            <p>Duration: {{ subscription.duration}} days</p>
+                        </div>
+                        <div class="container-fluid align-bottom mb-3">
+                            {% if subscription.promotional_price %}
+                                <h6 class="strikethrough">€{{ subscription.price }}</h6>
+                                <h5 class="text-danger">€{{ subscription.promotional_price }}</h5>
+                            {% elif subscription.price == 0 %}
+                                <h5>FREE</h5>
+                            {% else %}
+                                <h5>€{{ subscription.price }}</h5>
+                            {% endif %}
+                            {% if subscription.is_active %}
+                                <form action="{% url 'purchase_subscription' subscription.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn btn-lg btn-success">Buy</button>
+                                </form>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

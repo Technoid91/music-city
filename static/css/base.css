@@ -21,6 +21,32 @@ body {
     text-transform: lowercase;
 }
 
+.strikethrough {
+    text-decoration: line-through;
+}
+
+.align-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: auto 0;
+}
+
+.overlay{
+    position: absolute;
+    background-color: rgba(255,0,0,0.5);
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.overlay > h3 {
+    position: absolute;
+    bottom: 5rem;
+    padding: 0.7rem 0;
+    left: 0;
+    right: 0;
+}
 .main-logo-link {
     width: fit-content;
 }
@@ -77,6 +103,10 @@ header {
     background-color: #e67300;
 }
 
+.header-container {
+    padding-top: 8rem;
+}
+
 .nav-link {
     color: #e67300;
     /*padding: 1rem 1.3rem;*/
@@ -105,7 +135,7 @@ header {
 }
 
 .content-area {
-        min-height: calc(100vh - 8rem); /* 164px - size of header */
+        min-height: calc(100vh - 16rem); /* 164px - size of header */
     }
 
 footer {
@@ -124,6 +154,10 @@ footer {
     color: white;
     font-size: 2.3rem;
     margin: 0 0.15rem;
+}
+
+.subscription-container {
+    height: 20rem;
 }
 
 
@@ -172,7 +206,7 @@ footer {
     user-select: none;
     background-color: #e67300;
     border: 1px solid #e67300;
-    padding: .375rem .75rem;
+    padding: .7rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
     border-radius: 4px;
@@ -203,9 +237,6 @@ footer {
     .container {
     max-width: 80%;
   }
-    .content-area {
-        min-height: calc(100vh - 12.5rem); /* 164px - size of header */
-    }
 }
 
 /* fixed top navbar only on medium and up */
@@ -217,22 +248,16 @@ footer {
         left: 0;
         z-index: 1030;
     }
-    .header-container {
-        padding-top: 4.6rem;
-    }
     .main-nav {
         background-color: #333;
     }
     .btn-secondary {
         padding: .7rem 1rem;
     }
-    .content-area {
-        min-height: calc(100vh - 12.5rem); /* 164px - size of header */
-    }
     .search-bar {
         border: 1px solid black;
     }
-    /*.nav-link {*/
-    /*    padding: 1rem 1.3rem;*/
+    /*.subscription-container {*/
+    /*    width: 20rem!important;*/
     /*}*/
 }
