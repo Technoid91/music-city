@@ -11,9 +11,9 @@
                 Guitars
             </a>
             <div class="dropdown-menu nav-dropdown border-0" aria-labelledby="guitars-link">
-                <a href="#" class="dropdown-item">Acoustic Guitars</a>
-                <a href="#" class="dropdown-item">Electric Guitars</a>
-                <a href="#" class="dropdown-item">Bass Guitars</a>
+                <a href="{% url 'products' %}?category=acoustic" class="dropdown-item">Acoustic Guitars</a>
+                <a href="{% url 'products' %}?category=electric" class="dropdown-item">Electric Guitars</a>
+                <a href="{% url 'products' %}?category=bass" class="dropdown-item">Bass Guitars</a>
             </div>
         </li>
         <li class="nav-item dropdown">
