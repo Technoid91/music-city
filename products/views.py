@@ -1,19 +1,42 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models.functions import Lower
 from .models import Product, Category
 
 def show_products(request):
 
     products = Product.objects.all()
+    brands = list(Product.objects.values_list('brand', flat=True).distinct())
+    brands.remove('other')
+    brands.append('other')
     query = None
     categories = None
+    sort = None
+    direction = None
 
     if request.GET:
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                products = products.annotate(lower_name=Lower('name'))
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            products = products.order_by(sortkey)
+
+
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
+
+        if 'brand' in request.GET:
+            brand = request.GET['brand']
+            products = products.filter(brand=brand)
 
 
         if 'q' in request.GET:
@@ -24,10 +47,14 @@ def show_products(request):
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
+    current_sorting = f'{sort}_{direction}'
+
     context = {
         'products': products,
         'search_term': query,
         'current_categories': categories,
+        'brands': brands,
+        'current_sorting': current_sorting,
     }
 
     return render(request, "products/products.html", context)
