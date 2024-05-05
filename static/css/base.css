@@ -211,11 +211,33 @@ footer {
     border-radius: 1rem;
 }
 
-.product-header{
+.product-header {
     background-color: #e67300;
     padding: 10px;
     border-radius: 2rem;
     text-align: center;
+}
+
+.btn-main {
+    color: #fff;
+    background-color: #e67300;
+    border: 1px solid #e67300;
+}
+
+.btn-main:hover {
+    color: #e67300;
+    background-color: initial;
+}
+
+.btn-back {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #333;
+}
+
+.btn-back:hover {
+    background-color: initial;
+    color: #333;
 }
 
 .sorting-area {
