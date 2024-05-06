@@ -93,6 +93,12 @@ body {
     color: #000 !important;
 }
 
+.btt-link,
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
+
 .btn-secondary {
     background-color: #333 !important;
     color: white !important;

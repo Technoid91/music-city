@@ -2,45 +2,45 @@
 
     // Disable +- buttons outside 1-99 range
     function handleEnableDisable(itemId) {
-        var currentValue = parseInt($(`#id_qty_${itemId}`));
+        var currentValue = parseInt($(`#id_qty_${itemId}`).val());
         var minusDisabled = currentValue < 2;
         var plusDisabled = currentValue > 98;
-        $(`#decrement-qty_{{ itemId }}`).prop('disabled', minusDisabled);
-        $(`#increment-qty_{{ itemId }}`).prop('disabled', plusDisabled);
+        $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
+        $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
     }
 
     // Disable buttons where necessary on the page load
     var allQtyInputs = $('.qty_input');
-    for (var i = 0; i < allQtyInputs.length; i++ ){
-        var itemId = $(allQtyInputs[i]).data('itemId');
+    for(var i = 0; i < allQtyInputs.length; i++ ){
+        var itemId = $(allQtyInputs[i]).data('item_id');
         handleEnableDisable(itemId);
     }
 
     // Enable and disable buttons every time qty changes
-    $('.qty_input').change(function(){
+    $('.qty_input').change(function() {
         var itemId = $(this).data('item_id');
         handleEnableDisable(itemId);
-    })
+    });
 
 
     // Increment quantity of the item in the shopping bag
-    $('increment-qty').click(function(e) {
+    $('.increment-qty').click(function(e) {
         e.preventDefault();
         var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
         var currentValue = parseInt($(closestInput).val());
         $(closestInput).val(currentValue + 1);
         var itemId = $(this).data('item_id');
         handleEnableDisable(itemId);
-    })
+    });
 
     // Decrement quantity of the item in the shopping bag
-    $('decrement-qty').click(function(e) {
+    $('.decrement-qty').click(function(e) {
         e.preventDefault();
         var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
         var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue -1 );
+        $(closestInput).val(currentValue - 1 );
         var itemId = $(this).data('item_id');
         handleEnableDisable(itemId);
-    })
+    });
 
 </script>
