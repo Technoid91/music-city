@@ -39,6 +39,14 @@ body {
     margin: auto 0;
 }
 
+.grey-bg {
+    background-color: #444;
+}
+
+.light-grey-bg {
+    background-color: #888;
+}
+
 .overlay{
     position: absolute;
     background-color: rgba(255,0,0,0.5);
@@ -79,27 +87,6 @@ body {
 
 .main-logo-link {
     width: fit-content;
-}
-
-.shop-now-button {
-    background: black;
-    color: white;
-    min-width: 260px;
-}
-
-.btn-black {
-    background: black;
-    color: white;
-}
-
-.shop-now-button:hover,
-.shop-now-button:active,
-.shop-now-button:focus,
-.btn-black:hover,
-.btn-black:active,
-.btn-black:focus {
-    background: #222;
-    color: white;
 }
 
 .text-black {
@@ -160,6 +147,21 @@ header {
 
 .dropdown-item:hover{
     background-color: #e67300;
+}
+
+.product-count-label {
+    position: absolute;
+    top: -4px; /* Располагаем кружок над значком */
+    right: -4px; /* Располагаем кружок справа от значка */
+    background-color: #FF0000FF; /* Цвет кружка */
+    color: white; /* Цвет текста внутри кружка */
+    border-radius: 50%; /* Создаем круглый кружок */
+    border: 1px solid #B70000FF;
+    width: 1.7rem; /* Ширина кружка */
+    height: 1.7rem; /* Высота кружка */
+    font-size: 1rem; /* Размер текста */
+    line-height: 1.5rem; /* Высота текста */
+    text-align: center; /* Центрируем текст внутри кружка */
 }
 
 .content-area {
@@ -271,6 +273,10 @@ footer {
     color: #e67300;
     border: 1px solid #e67300;
 }
+
+thead {
+    background-color: #333;
+}
 /* Allauth form formatting */
 
 .allauth-header {
@@ -358,18 +364,13 @@ footer {
         left: 0;
         z-index: 1030;
     }
-    .main-nav {
-        background-color: #444;
-    }
+
     .btn-secondary {
         padding: .7rem 1rem;
     }
     .search-bar {
         border: 1px solid black;
     }
-    /*.subscription-container {*/
-    /*    width: 20rem!important;*/
-    /*}*/
 }
 
 /*!* pad the top a bit when navbar is collapsed on mobile *!*/

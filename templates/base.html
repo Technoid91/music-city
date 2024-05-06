@@ -74,16 +74,21 @@
                             </div>
                         </li>
                         <li class="list-inline-item">
-                            <a class="{% if grand_total %} text-info font-weight-bold{% else %}text-black{% endif %} btn btn-lg btn-secondary border-0 rounded-circle" href="{% url 'view_bag' %}">
+                            <a class="text-black btn btn-lg btn-secondary border-0 rounded-circle position-relative" href="{% url 'view_bag' %}">
                                 <div class="text-center">
                                     <div><i class="fa-solid fa-cart-shopping fa-lg"></i></div>
                                 </div>
+                                {% if product_count %}
+                                    <div class="product-count-label">
+                                        <p>{{ product_count }}</p>
+                                    </div>
+                                {% endif %}
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="row main-nav">
+            <div class="row grey-bg">
                 <nav class="navbar navbar-expand-lg w-100">
                     <button class="btn-lg btn-secondary rounded border-0 d-lg-none" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon">
