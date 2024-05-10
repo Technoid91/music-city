@@ -26,7 +26,7 @@
             <div><i class="fas fa-user fa-lg"></i></div>
         </div>
     </a>
-    <div class="dropdown-menu border-0" aria-labelledby="user-options">
+    <div class="dropdown-menu nav-dropdown border-0" aria-labelledby="user-options">
         {% if request.user.is_authenticated %}
             {% if request.user.is_superuser %}
                 <a href="{% url 'account_logout' %}" class="dropdown-item">Product Management</a>
@@ -40,9 +40,14 @@
     </div>
 </li>
 <li class="list-inline-item">
-    <a class="{% if grand_total %} text-info font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none btn btn-lg btn-secondary border-0 rounded-circle" href="">
+    <a class="nav-link d-block d-lg-none btn btn-lg btn-secondary border-0 rounded-circle position-relative" href="">
         <div class="text-center">
             <div><i class="fa-solid fa-cart-shopping fa-lg"></i></div>
         </div>
+        {% if product_count %}
+            <div class="product-count-label">
+                <p>{{ product_count }}</p>
+            </div>
+        {% endif %}
     </a>
 </li>

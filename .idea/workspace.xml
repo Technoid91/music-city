@@ -5,16 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cab23b05-0bfb-409b-b1aa-64cd328141e5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lessons/templates/lessons/buy_subscription.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/signals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout/static/checkout/css/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/static/checkout/css/checkout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout/static/checkout/js/stripe_elements.js" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/static/checkout/js/stripe_elements.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkout/static/checkout/css/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/checkout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkout/static/checkout/js/stripe_elements.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/stripe_elements.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/checkout/templates/checkout/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/templates/checkout/checkout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lessons/templates/lessons/subscriptions.html" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/templates/lessons/subscriptions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lessons/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lessons/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/includes/main_nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/main_nav.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/includes/mobile_top_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/mobile_top_header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/includes/toasts/toast_success.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/toasts/toast_success.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +94,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -163,6 +168,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/macbook/PycharmProjects/music-city&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -174,6 +180,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/css" />
+      <recent name="$PROJECT_DIR$/static/js" />
       <recent name="$PROJECT_DIR$/bag" />
       <recent name="$PROJECT_DIR$/media" />
     </key>
@@ -202,6 +210,9 @@
       <workItem from="1714667326303" duration="38791000" />
       <workItem from="1715073290640" duration="11863000" />
       <workItem from="1715166420266" duration="3069000" />
+      <workItem from="1715184325572" duration="5141000" />
+      <workItem from="1715254079965" duration="27081000" />
+      <workItem from="1715347513151" duration="12316000" />
     </task>
     <servers />
   </component>
@@ -246,6 +257,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">

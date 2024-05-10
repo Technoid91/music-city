@@ -20,15 +20,22 @@
         <div class="row">
             {% for subscription in subscriptions %}
                 <div class="col-lg col-md-6 col-sm-12 text-center">
-                    <div class="container subscription-container my-3 mx-xl-5 position-relative bg-white p-3">
-                        <div class="container-fluid overlay p-3{% if subscription.is_active %} d-none {% endif %}">
+                    <div class="container subscription-container my-3 position-relative bg-white p-3">
+                        <div class="container-fluid inactive p-3{% if subscription.is_active %} d-none {% endif %}">
                             <h3 class="text-white text-center bg-danger">INACTIVE</h3>
                         </div>
                         <div class="container-fluid">
-                            <h4>{{ subscription.name }}</h4>
-                            <p>{{ subscription.description}}</p>
-                            <p>Duration: {{ subscription.duration}} days</p>
+                            <h4 class="highlight-color">{{ subscription.name }}</h4>
+                            <p>
+                                <i class="fa-solid fa-calendar-days"></i>
+                                {{ subscription.duration}} days
+                            </p>
                         </div>
+                        {% if subscription.image %}
+                            <div class="subscription-img">
+                                <img class="card-img-top img-fluid" src="{{ subscription.image.url }}">
+                            </div>
+                        {% endif %}
                         <div class="container-fluid align-bottom mb-3">
                             {% if subscription.promotional_price %}
                                 <h6 class="strikethrough">€{{ subscription.price }}</h6>
@@ -39,10 +46,14 @@
                                 <h5>€{{ subscription.price }}</h5>
                             {% endif %}
                             {% if subscription.is_active %}
-                                <form action="{% url 'purchase_subscription' subscription.id %}" method="POST">
-                                    {% csrf_token %}
-                                    <button class="btn btn-lg btn-success">Buy</button>
-                                </form>
+                                <a href="{% url 'buy_subscription' subscription.id %}" class="btn btn-main">
+                                    <span>
+                                        Subscribe
+                                    </span>
+                                    <span>
+                                        <i class="fa-solid fa-check"></i>
+                                    </span>
+                                </a>
                             {% endif %}
 
                         </div>
