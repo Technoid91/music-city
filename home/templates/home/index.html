@@ -12,16 +12,20 @@
 {% block content %}
 
     {% if products %}
-        <div class="container rounded-bg light-bg p-3 mt-3">
-            <h2 class="text-black text-center text-uppercase">Special offers</h2>
+        <div class="container rounded-bg light-bg p-3 mt-3 w-75">
+            <h4 class="highlight-color text-center text-uppercase">
+                <i class="fa-regular fa-star"></i>
+                 Special offers
+                <i class="fa-regular fa-star"></i>
+            </h4>
             <hr>
-            <div class="row mx-0">
+            <div class="row mx-3">
                 {% for product in products %}
-                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                        <div class="card card-product h-100">
+                    <div class="col-sm-4 col-md-4 col-lg-3 col-xl-2">
+                        <div class="card card-product mx-0">
                             {% if product.image %}
                                 <a href="{% url 'product_detail' product.id %}">
-                                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    <img class="w-100" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 </a>
                             {% else %}
                                 <a href="{% url 'product_detail' product.id %}">
@@ -29,17 +33,17 @@
                                 </a>
                             {% endif %}
                             <div class="card-body pb-0">
-                                <p class="mb-0">{{ product.name }}</p>
+                                <p class="mb-0 small">{{ product.name }}</p>
                             </div>
                             <div class="card-footer bg-white pt-0 border-0 text-left">
                                 <div class="row">
                                     {% if product.old_price %}
-                                    <div class="col">
-                                        <p class="lead mb-0 text-left text-muted font-weight-bold strikethrough">€{{ product.old_price }}</p>
+                                    <div class="col-6 mx-0 px-0">
+                                        <p class="mb-0 ml-2 text-left text-muted font-weight-bold strikethrough">€{{ product.old_price }}</p>
                                     </div>
                                     {% endif %}
-                                    <div class="col">
-                                        <p class="lead mb-0 text-right font-weight-bold highlight-color">€{{ product.price }}</p>
+                                    <div class="col-6 mx-0 px-0">
+                                        <p class="mb-0 float-right font-weight-bold highlight-color">€{{ product.price }}</p>
                                     </div>
                                 </div>
                             </div>

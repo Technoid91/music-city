@@ -11,9 +11,10 @@
 
 {% block content %}
     <div class="container">
-        <div class="row text-center">
-            <div class="col">
-                <h2 class="text-white">Get your subscription!</h2>
+        <hr>
+        <div class="row mt-3">
+            <div class="container">
+                <h2 class="text-black text-center mx-3">Get your subscription today!</h2>
             </div>
         </div>
         <hr>
@@ -36,14 +37,14 @@
                                 <img class="card-img-top img-fluid" src="{{ subscription.image.url }}">
                             </div>
                         {% endif %}
-                        <div class="container-fluid align-bottom mb-3">
+                        <div class="container-fluid align-bottom white-bg pb-3">
                             {% if subscription.promotional_price %}
-                                <h6 class="strikethrough">€{{ subscription.price }}</h6>
-                                <h5 class="text-danger">€{{ subscription.promotional_price }}</h5>
+                                <h6 class="strikethrough m-0">€{{ subscription.price }}</h6>
+                                <h5 class="text-danger m-0">€{{ subscription.promotional_price }}</h5>
                             {% elif subscription.price == 0 %}
-                                <h5>FREE</h5>
+                                <h5 class="m-0">FREE</h5>
                             {% else %}
-                                <h5>€{{ subscription.price }}</h5>
+                                <h5 class="m-0">€{{ subscription.price }}</h5>
                             {% endif %}
                             {% if subscription.is_active %}
                                 <a href="{% url 'buy_subscription' subscription.id %}" class="btn btn-main">

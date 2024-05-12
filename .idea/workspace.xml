@@ -6,16 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="cab23b05-0bfb-409b-b1aa-64cd328141e5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkout/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkout/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkout/templates/checkout/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/templates/checkout/checkout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/home/templates/home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/home/templates/home/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/home/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lessons/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lessons/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lessons/templates/lessons/lessons.html" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/templates/lessons/lessons.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lessons/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lessons/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lessons/templates/lessons/buy_subscription.html" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/templates/lessons/buy_subscription.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lessons/templates/lessons/subscriptions.html" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/templates/lessons/subscriptions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/checkout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/includes/main_nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/main_nav.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +209,7 @@
       <workItem from="1715166420266" duration="3069000" />
       <workItem from="1715184325572" duration="5141000" />
       <workItem from="1715254079965" duration="27081000" />
-      <workItem from="1715347513151" duration="48040000" />
+      <workItem from="1715347513151" duration="55582000" />
     </task>
     <servers />
   </component>

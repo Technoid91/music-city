@@ -61,20 +61,40 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
-                    <legend class="text-center muted px-2 w-auto">Please enter your card details</legend>
-                    <!-- A Stripe card element will go here -->
-                    <div class="mb-3" id="card-element"></div>
-                    <!-- Used to display form errors -->
-                    <div class="mb-1 text-danger" id="card-errors" role="alert"></div>
+                    {% if request.user.is_authenticated %}
+                        <legend class="text-center muted px-2 w-auto">Please enter your card details</legend>
+                        <!-- A Stripe card element will go here -->
+                        <div class="mb-3" id="card-element"></div>
+                        <!-- Used to display form errors -->
+                        <div class="mb-1 text-danger" id="card-errors" role="alert"></div>
 
-                    <div class="align-bottom mb-4">
-                        <p class="text-danger my-0">
-                            <span class="icon">
+                        <div class="align-bottom mb-4">
+                            <p class="text-danger my-0">
+                                <span class="icon">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </span>
+                                <span>Your card will be charged <strong>€{{ total|floatformat:2 }}</strong></span>
+                            </p>
+                        </div>
+                    {% else %}
+                        <div class="container highlight-border py-5 mt-4">
+                            <div class="h4 highlight-color text-center">
                                 <i class="fas fa-exclamation-circle"></i>
-                            </span>
-                            <span>Your card will be charged <strong>€{{ total|floatformat:2 }}</strong></span>
-                        </p>
-                    </div>
+                            </div>
+                            <p class="h5 text-center text-secondary">
+                                Please
+                                <a class="highlight-color text-decoration-none" href="{% url 'account_login' %}">
+                                    login
+                                </a>
+                                or
+                                <a class="highlight-color text-decoration-none" href="{% url 'account_signup' %}">
+                                    signup
+                                </a>
+                                to purchase subscription
+                            </p>
+                        </div>
+
+                    {% endif %}
                 </div>
 
             </div>
@@ -85,7 +105,8 @@
                     </span>
                     <span class="font-weight-bold">Back</span>
                 </a>
-                 <button class="btn btn-main mx-2" id="submit-button" type="submit">
+                 <button class="btn {% if request.user.is_authenticated %}btn-main{% else %}btn-inactive{% endif %}
+                 mx-2" id="submit-button" type="submit" {% if not request.user.is_authenticated %}disabled{% endif %}>
                         <span>Checkout</span>
                     <span class="icon">
                         <i class="fas fa-lock"></i>

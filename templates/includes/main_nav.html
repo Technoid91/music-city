@@ -6,6 +6,9 @@
         <li class="nav-item">
             <a class="nav-link text-uppercase mr-5" href="{% url 'check_subscription' %}">Lessons</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link text-uppercase mr-5" href="{% url 'products' %}">All products</a>
+        </li>
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold text-uppercase nav-link mr-5 outlined" href="#" id="guitars-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Guitars
@@ -18,21 +21,20 @@
         </li>
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold text-uppercase nav-link mr-5 outlined" href="#" id="drums-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Amps
+                Equipment
             </a>
             <div class="dropdown-menu nav-dropdown border-0" aria-labelledby="drums-link">
-                <a href="#" class="dropdown-item">Drums & Percussion</a>
-                <a href="#" class="dropdown-item">Base</a>
-                <a href="#" class="dropdown-item">Accessories</a>
+                <a href="{% url 'products' %}?category=amps" class="dropdown-item">Amplifiers</a>
+                <a href="{% url 'products' %}?category=pedals" class="dropdown-item">Sound pedals</a>
             </div>
         </li>
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold text-uppercase nav-link mr-5" href="#" id="accessories-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Accessories
+                Other
             </a>
             <div class="dropdown-menu nav-dropdown" aria-labelledby="accessories-link">
-                <a href="#" class="dropdown-item">For guitar</a>
-                <a href="#" class="dropdown-item">For drums</a>
+                <a href="{% url 'products' %}?category=accs" class="dropdown-item">Accessories</a>
+                <a href="{% url 'products' %}?category=merch" class="dropdown-item">Merch</a>
             </div>
         </li>
 
