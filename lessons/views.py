@@ -70,6 +70,7 @@ def buy_subscription(request, subscription_id):
                 'total': total,
                 'stripe_public_key': stripe_public_key,
                 'client_secret': intent.client_secret,
+                'simple_message': True,
             }
             return render(request, 'lessons/buy_subscription.html', context)
         # Free subscription handler
