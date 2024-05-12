@@ -10,6 +10,75 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Welcome to lessons section!</h2>
+    <h2 class="text-center text-white">Welcome to lessons section!</h2>
 
+    <div class="container container-fluid">
+        {% for playlist in playlists %}
+            <div class="row m-3 p-3 bg-dark rounded">
+                <div class="container-fluid">
+                    <div class="highlight-color highlight-border rounded text-uppercase pl-4 py-4">
+                        <span class="h3 mr-3">
+                            <i class="fa-solid fa-award"></i>
+                        </span>
+                        <span class="lead">
+                            {{ playlist.friendly_name }}
+                        </span>
+                        <span class="icon float-right mr-4 mt-1">
+                            <button class="toggle-lessons btn btn-sm btn-main" data-toggle="collapse"
+                                data-target="#lessons-{{ playlist.id }}">
+                                <i class="fa-solid fa-chevron-down"></i>
+                                <i class="fa-solid fa-chevron-up d-none"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <hr>
+                <div id="lessons-{{ playlist.id }}" class="row collapse">
+                    {% for lesson in lessons %}
+                        <div class="col-sm-6 col-md-6 col-lg-4 mb-3 p-3">
+                            <a href="{% url 'lesson' lesson.number %}" class=" text-black text-decoration-none">
+                                <div class="card card-lesson rounded">
+                                    {% if lesson.cover_image %}
+                                        <img class="card-img-top" src="{{ lesson.cover_image.url }}">
+                                    {% endif %}
+                                    <div class="align-bottom-right lesson-number mr-2">
+                                        <h5 class="pt-2">{{ lesson.number}}</h5>
+                                    </div>
+                                </div>
+                                <p class="text-center btn-main fit-text mt-3  p-3">{{ lesson.name }}</p>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script>
+        $(document).ready(function() {
+            $('.toggle-lessons').on('click', function() {
+                console.log('Клик на кнопке');
+
+                var $chevronDown = $(this).find('.fa-chevron-down');
+                var $chevronUp = $(this).find('.fa-chevron-up');
+
+                console.log('$chevronDown:', $chevronDown);
+                console.log('$chevronUp:', $chevronUp);
+
+                if ($chevronDown.hasClass('d-none')) {
+                    console.log('Переключаем иконку на вверх');
+                    $chevronDown.removeClass('d-none');
+                    $chevronUp.addClass('d-none');
+                } else {
+                    console.log('Переключаем иконку на вниз');
+                    $chevronDown.addClass('d-none');
+                    $chevronUp.removeClass('d-none');
+                }
+            });
+        });
+    </script>
 {% endblock %}

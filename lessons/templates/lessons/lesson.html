@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container container-lesson container-fluid w-70 m-auto light-bg text-center position-relative">
+        <h4 class="text-black pt-3">Lesson {{lesson.number}}: <strong>{{ lesson.name }}</strong></h4>
+        <hr>
+        {% if lesson.image_url %}
+            <img src="{{ lesson.image_url }}">
+        {% endif %}
+        {% if lesson.video_url %}
+            <iframe width="560" height="315" src="{{lesson.video_url}}}" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+            </iframe>
+        {% endif %}
+        {% if lesson.text %}
+            <p>{{ lesson.text }}</p>
+        {% endif %}
+        <div class="row">
+            <div class="container container-fluid lesson-buttons light-bg rounded p-2 px-5 w-50">
+                <div class="float-left">
+                    <a href="{% url 'lessons' %}" class="btn btn-back">
+                        <span class="icon">
+                              <i class="fa-solid fa-angles-left"></i>
+                        </span>
+                        <span>
+                            Back to Lessons
+                        </span>
+                    </a>
+                </div>
+                <div class="text-center">
+                    <a href="{% url 'lesson' previous_lesson %}"
+                       class="btn btn-size {% if btn_previous %}btn-main{% else %}btn-inactive{% endif %}"
+                       {% if not btn_previous %} onclick="return false;" {% endif %}>
+                        <span class="icon">
+                            <i class="fa-solid fa-angle-left"></i>
+                        </span>
+                        <span>
+                            Previous
+                        </span>
+                    </a>
+                    <a href="{% url 'lesson' next_lesson %}"
+                       class="btn btn-size {% if btn_next %}btn-main{% else %}btn-inactive{% endif %}"
+                       {% if not btn_next %} onclick="return false;" {% endif %}>
+                        <span>
+                            Next
+                        </span>
+                        <span class="icon">
+                            <i class="fa-solid fa-angle-right"></i>
+                        </span>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

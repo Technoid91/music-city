@@ -11,9 +11,42 @@
 
 {% block content %}
 
-    <div class="container">
-        <p>Welcome to our music community</p>
-
-    </div>
-
+    {% if products %}
+        <div class="container rounded-bg light-bg p-3 mt-3">
+            <h2 class="text-black text-center text-uppercase">Special offers</h2>
+            <hr>
+            <div class="row mx-0">
+                {% for product in products %}
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                        <div class="card card-product h-100">
+                            {% if product.image %}
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                </a>
+                            {% else %}
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                </a>
+                            {% endif %}
+                            <div class="card-body pb-0">
+                                <p class="mb-0">{{ product.name }}</p>
+                            </div>
+                            <div class="card-footer bg-white pt-0 border-0 text-left">
+                                <div class="row">
+                                    {% if product.old_price %}
+                                    <div class="col">
+                                        <p class="lead mb-0 text-left text-muted font-weight-bold strikethrough">€{{ product.old_price }}</p>
+                                    </div>
+                                    {% endif %}
+                                    <div class="col">
+                                        <p class="lead mb-0 text-right font-weight-bold highlight-color">€{{ product.price }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

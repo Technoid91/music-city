@@ -14,6 +14,7 @@ class Subscription(models.Model):
     def __str__(self):
         return self.name
 
+
 class UserSubscription(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     subscribed = models.BooleanField(default=False)
@@ -24,3 +25,28 @@ class UserSubscription(models.Model):
     class Meta:
         verbose_name = "Subscribed User"
         verbose_name_plural = "Subscribed Users"
+
+
+class Lesson(models.Model):
+    name = models.CharField(max_length=50)
+    playlist = models.ForeignKey('Playlist', null=True, blank=True, on_delete=models.SET_NULL)
+    number = models.IntegerField()
+    cover_image = models.ImageField(null=True, blank=True)
+    img_url = models.URLField(max_length=1024, null=True, blank=True)
+    text = models.TextField(null=True, blank=True)
+    video_url = models.URLField(max_length=1024, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Playlist(models.Model):
+    name = models.CharField(max_length=40)
+    friendly_name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+    def get_friendly_name(self):
+        return self.friendly_name
+

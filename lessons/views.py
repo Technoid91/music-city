@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, HttpResponse, reverse
 from django.contrib import messages
 from django.conf import settings
 from datetime import datetime, timedelta
-from .models import UserSubscription, Subscription
+from .models import UserSubscription, Subscription, Lesson, Playlist
+from .utils import fetch_youtube_thumbnail
 
 import stripe
 
@@ -114,13 +115,79 @@ def buy_subscription(request, subscription_id):
             messages.info(request, 'Please login or create an account')
             return redirect(request.META.get('HTTP_REFERER', '/'))
 
+
 def show_lessons(request):
     try:
         current_user = UserSubscription.objects.get(user=request.user)
         if current_user.subscribed:
-            return render(request, 'lessons/lessons.html')
+
+            lessons = Lesson.objects.all().order_by('number')
+            playlists = Playlist.objects.filter(lesson__isnull=False).distinct()
+
+            for lesson in lessons:
+                if not lesson.cover_image:
+                    if lesson.video_url:
+                        thumbnail = fetch_youtube_thumbnail(lesson.video_url)
+                        if thumbnail:
+                            lesson.cover_image.save(f'{lesson.id}_thumbnail.jpg', thumbnail, save=True)
+                        else:
+                            # setting default_cover.jpeg if cannot fetch YouTube cover image
+                            default_cover_path = settings.MEDIA_ROOT + '/default_cover.jpeg'
+                            with open(default_cover_path, 'rb') as f:
+                                lesson.cover_image.save('default_cover.jpeg', f, save=True)
+                    else:
+                        # set default_cover.jpeg if lesson has no video
+                        default_cover_path = settings.MEDIA_ROOT + '/default_cover.jpeg'
+                        with open(default_cover_path, 'rb') as f:
+                            lesson.cover_image.save('default_cover.jpeg', f, save=True)
+
+            context = {
+                'lessons': lessons,
+                'playlists': playlists,
+            }
+            return render(request, 'lessons/lessons.html', context)
         else:
             return redirect('check_subscription')
     except UserSubscription.DoesNotExist:
         messages.info(request, 'You should be subscribed to view lessons')
         return redirect('check_subscription')
+
+
+def lesson(request, lesson_number):
+    current_lesson = Lesson.objects.get(number=lesson_number)
+
+    all_lessons = Lesson.objects.filter(playlist=current_lesson.playlist)
+    all_lessons = all_lessons.order_by('number')
+    last_lesson = all_lessons.count()
+
+    btn_previous = False
+    previous_lesson = current_lesson.number
+    btn_next = True
+    next_lesson = current_lesson.number
+
+    if current_lesson.video_url:
+        video_id = str(current_lesson.video_url.split("/")[:-1])
+        video_id = str(video_id.split("?")[0])
+    else:
+        video_id = None
+
+    if current_lesson.number > 1:
+        btn_previous = True
+        previous_lesson -= 1
+
+    if current_lesson.number == last_lesson:
+        btn_next = False
+    else:
+        next_lesson += 1
+
+    context = {
+        'lesson': current_lesson,
+        'video_id': video_id,
+        'btn_next': btn_next,
+        'btn_previous': btn_previous,
+        'next_lesson': next_lesson,
+        'previous_lesson': previous_lesson,
+    }
+    return render(request, 'lessons/lesson.html', context)
+
+
