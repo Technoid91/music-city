@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-r-4bb5b9lq*-lw*+0#wz74y555=p3$fz*@sy7gf9=w1byo1v(2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['music-city.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['music-city-d688a3a37a92.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
