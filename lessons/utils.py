@@ -9,4 +9,5 @@ def fetch_youtube_thumbnail(video_url):
     response = requests.get(youtube_thumbnail_url)
     if response.status_code == 200:
         return ContentFile(response.content)
+    print('[ ! ] cannot fetch Youtube thumbnail')
     return None

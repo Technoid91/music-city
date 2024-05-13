@@ -75,6 +75,9 @@ def buy_subscription(request, subscription_id):
             return render(request, 'lessons/buy_subscription.html', context)
         # Free subscription handler
         else:
+            if not request.user.is_authenticated:
+                messages.info(request, 'Please login or signup to get your free subscription')
+                return redirect(request.META.get('HTTP_REFERER', '/'))
             existing_subscription = UserSubscription.objects.filter(user=request.user).first()
             # If user has been subscribed already
             if existing_subscription:
@@ -125,6 +128,8 @@ def show_lessons(request):
             lessons = Lesson.objects.all().order_by('number')
             playlists = Playlist.objects.filter(lesson__isnull=False).distinct()
 
+            default_cover_path = 'static/img/default_cover.jpeg'
+
             for lesson in lessons:
                 if not lesson.cover_image:
                     if lesson.video_url:
@@ -133,12 +138,10 @@ def show_lessons(request):
                             lesson.cover_image.save(f'{lesson.id}_thumbnail.jpg', thumbnail, save=True)
                         else:
                             # setting default_cover.jpeg if cannot fetch YouTube cover image
-                            default_cover_path = settings.MEDIA_ROOT + '/default_cover.jpeg'
                             with open(default_cover_path, 'rb') as f:
                                 lesson.cover_image.save('default_cover.jpeg', f, save=True)
                     else:
                         # set default_cover.jpeg if lesson has no video
-                        default_cover_path = settings.MEDIA_ROOT + '/default_cover.jpeg'
                         with open(default_cover_path, 'rb') as f:
                             lesson.cover_image.save('default_cover.jpeg', f, save=True)
 
