@@ -134,16 +134,13 @@ def show_lessons(request):
                     if lesson.video_url:
                         thumbnail = fetch_youtube_thumbnail(lesson.video_url)
                         if thumbnail:
-                            # Присваиваем URL обложки из YouTube
                             lesson.cover_image = thumbnail
                         else:
-                            # Используем путь к изображению по умолчанию
                             lesson.cover_image = default_cover_path
                     else:
-                        # Используем путь к изображению по умолчанию
                         lesson.cover_image = default_cover_path
 
-                    lesson.save()  # Сохраняем изменения в базе данных
+                    lesson.save()
 
             context = {
                 'lessons': lessons,
