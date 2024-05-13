@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
+from cloudinary.models import CloudinaryField
+
 
 
 class Subscription(models.Model):
@@ -9,7 +11,7 @@ class Subscription(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     promotional_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     is_active = models.BooleanField(default=True)
-    image = models.ImageField(null=True, blank=True)
+    image = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
         return self.name
@@ -31,7 +33,7 @@ class Lesson(models.Model):
     name = models.CharField(max_length=50)
     playlist = models.ForeignKey('Playlist', null=True, blank=True, on_delete=models.SET_NULL)
     number = models.IntegerField()
-    cover_image = models.ImageField(null=True, blank=True)
+    cover_image = CloudinaryField('image', default='placeholder')
     img_url = models.URLField(max_length=1024, null=True, blank=True)
     text = models.TextField(null=True, blank=True)
     video_url = models.URLField(max_length=1024, null=True, blank=True)
