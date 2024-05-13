@@ -6,18 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cab23b05-0bfb-409b-b1aa-64cd328141e5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout/templates/checkout/checkout_success.html" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/templates/checkout/checkout_success.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lessons/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/music_city/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/music_city/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/music_city/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/music_city/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/allauth/account/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/includes/mobile_top_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/mobile_top_header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/includes/toasts/toast_success.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/toasts/toast_success.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +201,8 @@
       <workItem from="1715166420266" duration="3069000" />
       <workItem from="1715184325572" duration="5141000" />
       <workItem from="1715254079965" duration="27081000" />
-      <workItem from="1715347513151" duration="61161000" />
+      <workItem from="1715347513151" duration="62105000" />
+      <workItem from="1715611658862" duration="3265000" />
     </task>
     <servers />
   </component>
