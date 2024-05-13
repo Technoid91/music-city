@@ -124,7 +124,6 @@ def show_lessons(request):
     try:
         current_user = UserSubscription.objects.get(user=request.user)
         if current_user.subscribed:
-
             lessons = Lesson.objects.all().order_by('number')
             playlists = Playlist.objects.filter(lesson__isnull=False).distinct()
 
@@ -135,15 +134,16 @@ def show_lessons(request):
                     if lesson.video_url:
                         thumbnail = fetch_youtube_thumbnail(lesson.video_url)
                         if thumbnail:
-                            lesson.cover_image.save(f'{lesson.id}_thumbnail.jpg', thumbnail, save=True)
+                            # Присваиваем URL обложки из YouTube
+                            lesson.cover_image = thumbnail
                         else:
-                            # setting default_cover.jpeg if cannot fetch YouTube cover image
-                            with open(default_cover_path, 'rb') as f:
-                                lesson.cover_image.save('default_cover.jpeg', f, save=True)
+                            # Используем путь к изображению по умолчанию
+                            lesson.cover_image = default_cover_path
                     else:
-                        # set default_cover.jpeg if lesson has no video
-                        with open(default_cover_path, 'rb') as f:
-                            lesson.cover_image.save('default_cover.jpeg', f, save=True)
+                        # Используем путь к изображению по умолчанию
+                        lesson.cover_image = default_cover_path
+
+                    lesson.save()  # Сохраняем изменения в базе данных
 
             context = {
                 'lessons': lessons,
@@ -155,7 +155,6 @@ def show_lessons(request):
     except UserSubscription.DoesNotExist:
         messages.info(request, 'You should be subscribed to view lessons')
         return redirect('check_subscription')
-
 
 def lesson(request, lesson_number):
     current_lesson = Lesson.objects.get(number=lesson_number)

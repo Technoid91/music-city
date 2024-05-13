@@ -40,7 +40,7 @@
                             <a href="{% url 'lesson' lesson.number %}" class=" text-black text-decoration-none">
                                 <div class="card card-lesson rounded">
                                     {% if lesson.cover_image %}
-                                        <img class="card-img-top" src="{{ lesson.cover_image.url }}">
+                                        <img class="card-img-top" src="{{ lesson.cover_image }}">
                                     {% endif %}
                                     <div class="align-bottom-right lesson-number mr-2">
                                         <h5 class="pt-2">{{ lesson.number}}</h5>

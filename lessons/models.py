@@ -11,7 +11,7 @@ class Subscription(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     promotional_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     is_active = models.BooleanField(default=True)
-    image = CloudinaryField('image', default='placeholder', null=True, blank=True)
+    image = CloudinaryField('image', default=None, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -33,7 +33,7 @@ class Lesson(models.Model):
     name = models.CharField(max_length=50)
     playlist = models.ForeignKey('Playlist', null=True, blank=True, on_delete=models.SET_NULL)
     number = models.IntegerField()
-    cover_image = CloudinaryField('image', default='placeholder')
+    cover_image = CloudinaryField('image', null=True, blank=True)
     img_url = models.URLField(max_length=1024, null=True, blank=True)
     text = models.TextField(null=True, blank=True)
     video_url = models.URLField(max_length=1024, null=True, blank=True)
