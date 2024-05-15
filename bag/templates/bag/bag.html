@@ -33,7 +33,7 @@
                             </tr>
                         </thead>
                         {% for item in bag_items %}
-                            <tr class="light-grey-bg">
+                            <tr class="light-bg">
                                 <td class="p-3 w-25">
                                     {% if item.product.image %}
                                         <img class="img-fluid rounded" src="{{ item.product.image.url }}">
@@ -85,10 +85,10 @@
                             </tr>
                         {% endfor %}
                         <tr>
-                            <td colspan="5" class="pt-5 grey-bg text-white text-right px-5">
+                            <td colspan="5" class="pt-5 text-black light-bg text-right px-5">
                                 <h6><strong>Bag Total: €{{ total|floatformat:2 }}</strong></h6>
-                                <h6 class="{% if delivery == 0 %} text-success{% endif %}">Delivery: €{{ delivery|floatformat:2 }}</h6>
-                                <h4 class="mt-4"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>
+                                <h6 class="{% if delivery == 0 %} text-success {% else %}text-black{% endif %}">Delivery: €{{ delivery|floatformat:2 }}</h6>
+                                <h4 class="mt-4 highlight-color"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>
                                 {% if free_delivery_delta > 0 %}
                                     <p class="mb-1 text-danger">
                                         You could get free delivery by spending just <strong>€{{ free_delivery_delta }}</strong> more!
@@ -97,7 +97,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="5" class="text-right grey-bg text-white px-5 pb-3">
+                            <td colspan="5" class="text-right light-bg text-white px-5 pb-3">
                                 <a href="{% url 'products' %}" class="btn btn-back btn-lg">
                                     <span class="icon">
                                         <i class="fas fa-chevron-left"></i>
@@ -105,7 +105,7 @@
                                     <span class="text-uppercase">Keep Shopping</span>
                                 </a>
                                 <a href="{% url 'checkout' %}" class="btn btn-main btn-lg">
-                                    <span class="text-uppercase outlined">Secure Checkout</span>
+                                    <span class="text-uppercase">Secure Checkout</span>
                                     <span class="icon">
                                         <i class="fas fa-lock"></i>
                                     </span>

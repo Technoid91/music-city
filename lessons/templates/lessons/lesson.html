@@ -17,19 +17,31 @@
             <img src="{{ lesson.image_url }}">
         {% endif %}
         {% if lesson.video_url %}
-            <iframe width="560" height="315" src="{{lesson.video_url}}}" title="YouTube video player" frameborder="0"
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            <div class="row d-none d-lg-flex">
+                <div class="container-fluid">
+                    <iframe width="560" height="315" src="{{lesson.video_url}}}" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <div class="row d-block d-lg-none">
+                <div class="container-fluid">
+                    <iframe width="320" height="180" src="{{lesson.video_url}}}" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
 
-            </iframe>
         {% endif %}
         {% if lesson.text %}
             <p>{{ lesson.text }}</p>
         {% endif %}
         <div class="row">
-            <div class="container container-fluid lesson-buttons light-bg rounded p-2 px-5 w-50">
+            <div class="container container-fluid lesson-buttons light-bg rounded p-2 px-5">
                 <div class="float-left">
-                    <a href="{% url 'lessons' %}" class="btn btn-back">
+                    <a href="{% url 'lessons' %}" class="btn btn-back btn-responsive">
                         <span class="icon">
                               <i class="fa-solid fa-angles-left"></i>
                         </span>
@@ -40,7 +52,7 @@
                 </div>
                 <div class="text-center">
                     <a href="{% url 'lesson' previous_lesson %}"
-                       class="btn btn-size {% if btn_previous %}btn-main{% else %}btn-inactive{% endif %}"
+                       class="btn {% if btn_previous %}btn-main{% else %}btn-inactive{% endif %} btn-responsive"
                        {% if not btn_previous %} onclick="return false;" {% endif %}>
                         <span class="icon">
                             <i class="fa-solid fa-angle-left"></i>
@@ -50,7 +62,7 @@
                         </span>
                     </a>
                     <a href="{% url 'lesson' next_lesson %}"
-                       class="btn btn-size {% if btn_next %}btn-main{% else %}btn-inactive{% endif %}"
+                       class="btn {% if btn_next %}btn-main{% else %}btn-inactive{% endif %} btn-responsive"
                        {% if not btn_next %} onclick="return false;" {% endif %}>
                         <span>
                             Next

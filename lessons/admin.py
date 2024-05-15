@@ -2,6 +2,19 @@ from django.contrib import admin
 from .models import Subscription, UserSubscription, Lesson, Playlist
 
 
+class UserSubscriptionAdmin(admin.ModelAdmin):
+    list_display = (
+        'user',
+        'subscribed',
+        'subscription_name',
+        'start_date',
+        'expiry_date',
+    )
+
+    ordering = ('subscribed', 'start_date')
+
+
+
 class LessonAdmin(admin.ModelAdmin):
     list_display = (
         'playlist',
@@ -10,6 +23,7 @@ class LessonAdmin(admin.ModelAdmin):
     )
 
     ordering= ('playlist', 'number',)
+
 
 class PlaylistAdmin(admin.ModelAdmin):
     list_display = (
@@ -21,4 +35,4 @@ class PlaylistAdmin(admin.ModelAdmin):
 admin.site.register(Lesson, LessonAdmin)
 admin.site.register(Playlist, PlaylistAdmin)
 admin.site.register(Subscription)
-admin.site.register(UserSubscription)
+admin.site.register(UserSubscription, UserSubscriptionAdmin)

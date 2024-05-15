@@ -246,7 +246,7 @@ footer {
 }
 
 .container-lesson {
-    height: 30rem;
+    height: 20rem;
     width: auto;
 }
 
@@ -496,8 +496,10 @@ thead {
     border: 2px solid #e67300;
 }
 
-.btn-size {
-    min-width: 7rem;
+.btn-responsive {
+    min-width: 3rem;
+    font-size: 70%;
+    padding: 0 5px;
 }
 
 .btn-back:hover {
@@ -541,6 +543,12 @@ thead {
         z-index: 1030;
     }
 
+    .btn-responsive {
+        min-width: 6rem;
+        font-size: 100%;
+        padding: .5rem 1rem;
+    }
+
     .text-responsive {
         text-align: left;
     }
@@ -565,6 +573,10 @@ thead {
         bottom: 0;
         left: 0;
         margin: auto 0;
+    }
+    .container-lesson {
+        height: 30rem;
+        width: auto;
     }
 }
 

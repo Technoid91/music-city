@@ -28,6 +28,9 @@ class UserSubscription(models.Model):
         verbose_name = "Subscribed User"
         verbose_name_plural = "Subscribed Users"
 
+    def __str__(self):
+        return self.user.username
+
 
 class Lesson(models.Model):
     name = models.CharField(max_length=50)
