@@ -26,8 +26,16 @@
                         <p class="mb-0">{{ playlist.friendly_name }}</p>
                         <a href="{% url 'delete_playlist' playlist.id %}" class="text-danger">Delete</a>
                     </div>
-
                 {% endfor %}
+                 <hr>
+                 <h5 class="text-center">Subscriptions</h5>
+                 {% for subscription in subscriptions %}
+                    <div class="text-center small d-inline-block border-black rounded p-2">
+                        <p class="mb-0">{{ subscription.name }}</p>
+                        <a href="{% url 'edit_subscription' subscription.id %}" class="text-black">Edit</a>
+                        <a href="{% url 'delete_subscription' subscription.id %}" class="text-danger">Delete</a>
+                    </div>
+                 {% endfor %}
             </div>
         </div>
         <div class="row">

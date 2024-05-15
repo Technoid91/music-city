@@ -5,7 +5,7 @@ from django.conf import settings
 from datetime import datetime, timedelta
 from .models import UserSubscription, Subscription, Lesson, Playlist
 from .utils import fetch_youtube_thumbnail
-from .forms import LessonForm, PlaylistForm
+from .forms import LessonForm, PlaylistForm, ManageSubscriptionForm
 import stripe
 
 
@@ -126,6 +126,7 @@ def show_lessons(request):
     """ Show all lessons """
     try:
         current_user = UserSubscription.objects.get(user=request.user)
+        subscriptions = Subscription.objects.all()
         if current_user.subscribed:
             lessons = Lesson.objects.all().order_by('number')
             playlists = Playlist.objects.filter(lesson__isnull=False).distinct()
@@ -151,6 +152,7 @@ def show_lessons(request):
                 'lessons': lessons,
                 'playlists': playlists,
                 'all_playlists': all_playlists,
+                'subscriptions': subscriptions,
             }
             return render(request, 'lessons/lessons.html', context)
         else:
@@ -306,4 +308,50 @@ def delete_playlist(request, playlist_id):
     chosen_playlist.delete()
     messages.success(request, 'Playlist deleted!')
     return redirect(reverse('lessons'))
+
+
+@login_required
+def edit_subscription(request, subscription_id):
+    """ Edit a subscription """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    subscription = get_object_or_404(Subscription, pk=subscription_id)
+    if request.method == 'POST':
+        form = ManageSubscriptionForm(request.POST, request.FILES, instance=subscription)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated subscription!')
+            return redirect(reverse('lessons'))
+        else:
+            messages.error(request, 'Failed to update subscription. Please ensure the form is valid.')
+    else:
+        form = ManageSubscriptionForm(instance=subscription)
+        messages.info(request, f'You are editing {subscription.name}')
+
+    template = 'lessons/edit_subscription.html'
+    context = {
+        'form': form,
+        'subscription': subscription,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def delete_subscription(request, subscription_id):
+    """ Delete subscription """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    chosen_subscription = get_object_or_404(Subscription, pk=subscription_id)
+    chosen_subscription.delete()
+    messages.success(request, 'Subscription deleted!')
+    return redirect('lessons')
+
+
 

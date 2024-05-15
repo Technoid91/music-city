@@ -27,6 +27,11 @@ class PlaylistForm(forms.ModelForm):
         fields = '__all__'
 
 
+class ManageSubscriptionForm(forms.ModelForm):
+    class Meta:
+        model = Subscription
+        fields = '__all__'
+
 
 
 
