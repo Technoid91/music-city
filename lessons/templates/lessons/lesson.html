@@ -11,6 +11,12 @@
 
 {% block content %}
     <div class="container container-lesson container-fluid w-70 m-auto light-bg text-center position-relative">
+        {% if request.user.is_superuser %}
+            <div class="container-fluid p-3">
+                <a class="btn btn-main mx-3" href="{% url 'edit_lesson' lesson.id %}">Edit</a>
+                <a class="btn btn-main mx-3" href="{% url 'delete_lesson' lesson.id %}">Delete</a>
+            </div>
+        {% endif %}
         <h4 class="text-black pt-3">Lesson {{lesson.number}}: <strong>{{ lesson.name }}</strong></h4>
         <hr>
         {% if lesson.image_url %}

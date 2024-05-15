@@ -11,6 +11,33 @@
 
 {% block content %}
 
+    {% if request.user.is_superuser %}
+        <div class="row">
+             <div class="container container-fluid w-50 light-bg mb-3 pb-3">
+                <hr>
+                <h4 class="text-black text-uppercase text-center">Management</h4>
+                <hr>
+                <a class="btn btn-main" href="{% url 'add_lesson' %}">Add Lesson</a>
+                <a class="btn btn-main" href="{% url 'add_playlist' %}">Add Playlist</a>
+                 <hr>
+                 <h5 class="text-center">All playlists</h5>
+                {% for playlist in all_playlists %}
+                    <div class="text-center small d-inline-block border-black rounded p-2">
+                        <p class="mb-0">{{ playlist.friendly_name }}</p>
+                        <a href="{% url 'delete_playlist' playlist.id %}" class="text-danger">Delete</a>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="container container-fluid w-50 light-bg mb-3 pb-3">
+
+            </div>
+        </div>
+    {% endif %}
+
+
     <div class="container container-fluid">
         {% for playlist in playlists %}
             <div class="row p-3 bg-dark rounded">
@@ -37,7 +64,7 @@
                 <div id="lessons-{{ playlist.id }}" class="row w-100 mx-auto collapse">
                     {% for lesson in lessons %}
                         <div class="col-sm-6 col-md-6 col-lg-4 mb-3 p-3">
-                            <a href="{% url 'lesson' lesson.number %}" class=" text-black text-decoration-none">
+                            <a href="{% url 'lesson' lesson.id %}" class=" text-black text-decoration-none">
                                 <div class="card card-lesson rounded">
                                     {% if lesson.cover_image %}
                                         <img class="card-img-top" src="{{ lesson.cover_image }}">

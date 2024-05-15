@@ -37,11 +37,16 @@
                     <div class="product-header">
                         <h4 class="mb-0">{{ product.name }}</h4>
                     </div>
-
                     {% if product.old_price %}
                         <p class="lead mb-0 text-left font-weight-bold strikethrough"></p>
                     {% endif %}
                     <p class="lead mb-0 text-right font-weight-bold highlight-color">€{{ product.price }}</p>
+                    {% if request.user.is_superuser %}
+                        <small class="mr-1 float-right">
+                            <a href="{% url 'edit_product' product.id %}">Edit</a> |
+                            <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                        </small>
+                    {% endif %}
                     <p class="mt-3">{{ product.description }}</p>
                     <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                         {% csrf_token %}

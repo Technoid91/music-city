@@ -1,14 +1,16 @@
-from django.shortcuts import render, redirect, HttpResponse, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from datetime import datetime, timedelta
 from .models import UserSubscription, Subscription, Lesson, Playlist
 from .utils import fetch_youtube_thumbnail
-
+from .forms import LessonForm, PlaylistForm
 import stripe
 
 
 def check_subscription(request):
+    """ Checks if the user has a subscription and based on result shows subscriptions or lessons """
 
     if request.user.is_authenticated:
         try:
@@ -42,8 +44,8 @@ def check_subscription(request):
     return render(request, 'lessons/subscriptions.html', context)
 
 
-
 def buy_subscription(request, subscription_id):
+    """ Subscription checkout """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     subscription = Subscription.objects.get(id=subscription_id)
@@ -121,11 +123,14 @@ def buy_subscription(request, subscription_id):
 
 
 def show_lessons(request):
+    """ Show all lessons """
     try:
         current_user = UserSubscription.objects.get(user=request.user)
         if current_user.subscribed:
             lessons = Lesson.objects.all().order_by('number')
             playlists = Playlist.objects.filter(lesson__isnull=False).distinct()
+
+            all_playlists = Playlist.objects.all()
 
             default_cover_path = 'static/img/default_cover.jpeg'
 
@@ -145,6 +150,7 @@ def show_lessons(request):
             context = {
                 'lessons': lessons,
                 'playlists': playlists,
+                'all_playlists': all_playlists,
             }
             return render(request, 'lessons/lessons.html', context)
         else:
@@ -153,17 +159,26 @@ def show_lessons(request):
         messages.info(request, 'You should be subscribed to view lessons')
         return redirect('check_subscription')
 
-def lesson(request, lesson_number):
-    current_lesson = Lesson.objects.get(number=lesson_number)
 
+def lesson(request, lesson_id):
+    """ Shows chosen lesson """
+    current_lesson = Lesson.objects.get(pk=lesson_id)
     all_lessons = Lesson.objects.filter(playlist=current_lesson.playlist)
     all_lessons = all_lessons.order_by('number')
-    last_lesson = all_lessons.count()
 
+    all_lessons_list = list(all_lessons)
+    current_index = all_lessons_list.index(current_lesson)
+    previous_lesson = None
+    next_lesson = None
     btn_previous = False
-    previous_lesson = current_lesson.number
-    btn_next = True
-    next_lesson = current_lesson.number
+    btn_next = False
+
+    if current_index > 0:
+        previous_lesson = all_lessons_list[current_index - 1].id
+        btn_previous = True
+    if current_index < len(all_lessons_list) - 1:
+        next_lesson = all_lessons_list[current_index + 1].id
+        btn_next = True
 
     if current_lesson.video_url:
         video_id = str(current_lesson.video_url.split("/")[:-1])
@@ -171,14 +186,6 @@ def lesson(request, lesson_number):
     else:
         video_id = None
 
-    if current_lesson.number > 1:
-        btn_previous = True
-        previous_lesson -= 1
-
-    if current_lesson.number == last_lesson:
-        btn_next = False
-    else:
-        next_lesson += 1
 
     context = {
         'lesson': current_lesson,
@@ -190,4 +197,113 @@ def lesson(request, lesson_number):
     }
     return render(request, 'lessons/lesson.html', context)
 
+@login_required
+def add_lesson(request):
+    """ Add a lesson to the lessons section """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        form = LessonForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added lesson!')
+            return redirect(reverse('add_lesson'))
+        else:
+            messages.error(request, 'Failed to add lesson. Please ensure the form is valid.')
+    else:
+        form = LessonForm()
+
+    template = 'lessons/add_lesson.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def add_playlist(request):
+    """ Add a lessons playlist to the lessons section """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        form = PlaylistForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added playlist!')
+            return redirect(reverse('add_playlist'))
+        else:
+            messages.error(request, 'Failed to add playlist. Please ensure the form is valid.')
+    else:
+        form = PlaylistForm()
+
+    template = 'lessons/add_playlist.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+@login_required
+def edit_lesson(request, lesson_id):
+    """ Edit a product in the store """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    lesson = get_object_or_404(Lesson, pk=lesson_id)
+    if request.method == 'POST':
+        form = LessonForm(request.POST, request.FILES, instance=lesson)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated product!')
+            return redirect(reverse('product_detail', args=[lesson.id]))
+        else:
+            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+    else:
+        form = LessonForm(instance=lesson)
+        messages.info(request, f'You are editing {lesson.name}')
+
+    template = 'lessons/edit_lesson.html'
+    context = {
+        'form': form,
+        'lesson': lesson,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def delete_lesson(request, lesson_id):
+    """ Delete a product from the store """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    current_lesson = get_object_or_404(Lesson, pk=lesson_id)
+    current_lesson.delete()
+    messages.success(request, 'Lesson deleted!')
+    return redirect(reverse('lessons'))
+
+
+@login_required
+def delete_playlist(request, playlist_id):
+    """ Delete a product from the store """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    chosen_playlist = get_object_or_404(Lesson, pk=playlist_id)
+    chosen_playlist.delete()
+    messages.success(request, 'Playlist deleted!')
+    return redirect(reverse('lessons'))
 
