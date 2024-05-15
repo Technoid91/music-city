@@ -7,7 +7,13 @@
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta name="description" content="Guitar play lessons and musical instruments store">
+            <meta name="keywords"
+                  content="guitar, electric guitar, acoustic guitar, bass guitar, amplifier, gibson,
+                  cort, les paul, guitar lessons, guitar course, music store, ireland">
+
         {% endblock %}
+        <title>Music City {% block extra_title %}{% endblock %}</title>
 
         {% block extra_meta %}
         {% endblock %}
@@ -39,7 +45,6 @@
 
         {% block extra_js %}
         {% endblock %}
-        <title>Music City {% block extra_title %}{% endblock %}</title>
     </head>
     <body>
         <header class="container-fluid fixed-top">
@@ -144,29 +149,46 @@
 
         <footer class="container-fluid mt-3">
             <div class="row">
-                <div class="col-2"></div>
-                <div class="col-4 text-center social-links">
-                    <h5>Social links:</h5>
-                    <a>
+                <div class="col-6 text-center social-links pl-3">
+                    <h5>Follow us:</h5>
+                    <a class="highlight-color" href="" target="_blank" rel="noopener"
+                       aria-label="Visit our Facebook page (opens in a new tab)">
                         <i class="fa-brands fa-facebook fa-2x"></i>
                     </a>
-                    <a>
+                    <a class="highlight-color" href="" target="_blank" rel="noopener"
+                       aria-label="Visit our Youtube page (opens in a new tab)">
                         <i class="fa-brands fa-youtube fa-2x"></i>
                     </a>
-                    <a>
+                    <a class="highlight-color" href="" target="_blank" rel="noopener"
+                       aria-label="Visit our Twitter page (opens in a new tab)">
                         <i class="fa-brands fa-x-twitter fa-2x"></i>
                     </a>
-                    <a>
+                    <a class="highlight-color" href="" target="_blank" rel="noopener"
+                       aria-label="Visit our Instagram page (opens in a new tab)">
                         <i class="fa-brands fa-instagram fa-2x"></i>
                     </a>
 
                 </div>
-                <div class="col-4">
+                <div class="col-6 text-center pl-3">
+                    <h5>Useful links:</h5>
+                    <div>
+                        <a class="useful-links" href="https://www.musicnetwork.ie/" target="_blank"
+                        rel="noopener" aria-label="Link to the Irish music community (Opens in a new tab)">
+                            Music Network
+                        </a>
+                    </div>
+                    <div>
+                        <a class="useful-links" href="https://www.riam.ie/" target="_blank"
+                        rel="noopener" aria-label="Link to the Royal Irish Academy of Music web page
+                        (Opens in a new tab)">
+                            Royal Irish Academy of Music
+                        </a>
+                    </div>
+
 
                 </div>
-                <div class="col-2"></div>
             </div>
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col text-center">
                     <h6>Created by Sergii Sazonov</h6>
                 </div>

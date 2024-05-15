@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /bag/
+Sitemap: https://music-city-d688a3a37a92.herokuapp.com/sitemap.xml
