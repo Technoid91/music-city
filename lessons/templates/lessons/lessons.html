@@ -11,42 +11,6 @@
 
 {% block content %}
 
-    {% if request.user.is_superuser %}
-        <div class="row">
-             <div class="container container-fluid w-50 light-bg mb-3 pb-3">
-                <hr>
-                <h4 class="text-black text-uppercase text-center">Management</h4>
-                <hr>
-                <a class="btn btn-main" href="{% url 'add_lesson' %}">Add Lesson</a>
-                <a class="btn btn-main" href="{% url 'add_playlist' %}">Add Playlist</a>
-                 <a class="btn btn-main" href="{% url 'add_subscription' %}">Add Subscription</a>
-                 <hr>
-                 <h5 class="text-center">All playlists</h5>
-                {% for playlist in all_playlists %}
-                    <div class="text-center small d-inline-block border-black rounded p-2">
-                        <p class="mb-0">{{ playlist.friendly_name }}</p>
-                        <a href="{% url 'delete_playlist' playlist.id %}" class="text-danger">Delete</a>
-                    </div>
-                {% endfor %}
-                 <hr>
-                 <h5 class="text-center">Subscriptions</h5>
-                 {% for subscription in subscriptions %}
-                    <div class="text-center small d-inline-block border-black rounded p-2 {% if not subscription.is_active %} bg-grey {% endif %}">
-                        <p class="mb-0">{{ subscription.name }}</p>
-                        <a href="{% url 'edit_subscription' subscription.id %}" class="text-black">Edit</a>
-                        <a href="{% url 'delete_subscription' subscription.id %}" class="text-danger">Delete</a>
-                    </div>
-                 {% endfor %}
-            </div>
-        </div>
-        <div class="row">
-            <div class="container container-fluid w-50 light-bg mb-3 pb-3">
-
-            </div>
-        </div>
-    {% endif %}
-
-
     <div class="container container-fluid">
         {% for playlist in playlists %}
             <div class="row p-3 bg-dark rounded">
@@ -92,6 +56,35 @@
             </div>
         {% endfor %}
     </div>
+    {% if request.user.is_superuser %}
+        <div class="row">
+             <div class="container w-75 light-bg my-3 pb-3 mx-md-auto text-center">
+                <hr>
+                <h4 class="text-black text-uppercase text-center">Management</h4>
+                <hr>
+                <a class="btn btn-main" href="{% url 'add_lesson' %}">Add Lesson</a>
+                <a class="btn btn-main" href="{% url 'add_playlist' %}">Add Playlist</a>
+                 <a class="btn btn-main" href="{% url 'add_subscription' %}">Add Subscription</a>
+                 <hr>
+                 <h5 class="text-center">All playlists</h5>
+                {% for playlist in all_playlists %}
+                    <div class="text-center small d-inline-block border-black rounded p-2">
+                        <p class="mb-0">{{ playlist.friendly_name }}</p>
+                        <a href="{% url 'delete_playlist' playlist.id %}" class="text-danger">Delete</a>
+                    </div>
+                {% endfor %}
+                 <hr>
+                 <h5 class="text-center">Subscriptions</h5>
+                 {% for subscription in subscriptions %}
+                    <div class="text-center small d-inline-block border-black rounded p-2 {% if not subscription.is_active %} bg-grey {% endif %}">
+                        <p class="mb-0">{{ subscription.name }}</p>
+                        <a href="{% url 'edit_subscription' subscription.id %}" class="text-black">Edit</a>
+                        <a href="{% url 'delete_subscription' subscription.id %}" class="text-danger">Delete</a>
+                    </div>
+                 {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
 
 

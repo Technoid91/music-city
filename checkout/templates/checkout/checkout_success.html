@@ -17,23 +17,22 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col">
-                <hr>
-                <h2 class="logo-font mb-4">Thank You</h2>
-                <hr>
+            <div class="col12 col-lg-7">
+                <div class="product-header mb-4">
+                    <h2 class="text-uppercase text-black">Thank You!</h2>
+                </div>
                 <p class="text-black">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-12 col-lg-7">
-                <div class="order-confirmation-wrapper p-2 border">
+            <div class="col-12 col-lg-7 light-bg rounded p-3">
+                <div class="order-confirmation-wrapper p-2 border-black">
                     <div class="row">
                         <div class="col">
                             <small class="text-muted">Order Info:</small>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-12 col-md-4">
                             <p class="mb-0 text-black font-weight-bold">Order Number</p>
