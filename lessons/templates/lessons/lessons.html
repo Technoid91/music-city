@@ -19,6 +19,7 @@
                 <hr>
                 <a class="btn btn-main" href="{% url 'add_lesson' %}">Add Lesson</a>
                 <a class="btn btn-main" href="{% url 'add_playlist' %}">Add Playlist</a>
+                 <a class="btn btn-main" href="{% url 'add_subscription' %}">Add Subscription</a>
                  <hr>
                  <h5 class="text-center">All playlists</h5>
                 {% for playlist in all_playlists %}
@@ -30,7 +31,7 @@
                  <hr>
                  <h5 class="text-center">Subscriptions</h5>
                  {% for subscription in subscriptions %}
-                    <div class="text-center small d-inline-block border-black rounded p-2">
+                    <div class="text-center small d-inline-block border-black rounded p-2 {% if not subscription.is_active %} bg-grey {% endif %}">
                         <p class="mb-0">{{ subscription.name }}</p>
                         <a href="{% url 'edit_subscription' subscription.id %}" class="text-black">Edit</a>
                         <a href="{% url 'delete_subscription' subscription.id %}" class="text-danger">Delete</a>
@@ -71,19 +72,21 @@
                 <hr>
                 <div id="lessons-{{ playlist.id }}" class="row w-100 mx-auto collapse">
                     {% for lesson in lessons %}
-                        <div class="col-sm-6 col-md-6 col-lg-4 mb-3 p-3">
-                            <a href="{% url 'lesson' lesson.id %}" class=" text-black text-decoration-none">
-                                <div class="card card-lesson rounded">
-                                    {% if lesson.cover_image %}
-                                        <img class="card-img-top" src="{{ lesson.cover_image }}">
-                                    {% endif %}
-                                    <div class="align-bottom-right lesson-number mr-2">
-                                        <h5 class="pt-2">{{ lesson.number}}</h5>
+                        {% if lesson.playlist == playlist %}
+                            <div class="col-sm-6 col-md-6 col-lg-4 mb-3 p-3">
+                                <a href="{% url 'lesson' lesson.id %}" class=" text-black text-decoration-none">
+                                    <div class="card card-lesson rounded">
+                                        {% if lesson.cover_image %}
+                                            <img class="card-img-top" src="{{ lesson.cover_image }}">
+                                        {% endif %}
+                                        <div class="align-bottom-right lesson-number mr-2">
+                                            <h5 class="pt-2">{{ lesson.number}}</h5>
+                                        </div>
                                     </div>
-                                </div>
-                                <p class="text-center btn-main fit-text mt-3  p-3">{{ lesson.name }}</p>
-                            </a>
-                        </div>
+                                    <p class="text-center btn-main fit-text mt-3  p-3">{{ lesson.name }}</p>
+                                </a>
+                            </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

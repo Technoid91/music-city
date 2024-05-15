@@ -311,6 +311,32 @@ def delete_playlist(request, playlist_id):
 
 
 @login_required
+def add_subscription(request):
+    """ Add a subscription for lessons """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        form = ManageSubscriptionForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added subscription!')
+            return redirect(reverse('add_subscription'))
+        else:
+            messages.error(request, 'Failed to add subscription. Please ensure the form is valid.')
+    else:
+        form = ManageSubscriptionForm()
+
+    template = 'lessons/add_subscription.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+@login_required
 def edit_subscription(request, subscription_id):
     """ Edit a subscription """
 

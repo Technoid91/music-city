@@ -12,6 +12,7 @@ urlpatterns = [
     path('delete_lesson/<int:lesson_id>/', views.delete_lesson, name='delete_lesson'),
     path('add_playlist/', views.add_playlist, name='add_playlist'),
     path('delete_playlist/<int:playlist_id>/', views.delete_playlist, name='delete_playlist'),
+    path('add_subscription/', views.add_subscription, name='add_subscription'),
     path('edit_subscription/<int:subscription_id>/', views.edit_subscription, name='edit_subscription'),
     path('delete_subscription/<int:subscription_id>/', views.delete_subscription, name='delete_subscription'),
 ]
