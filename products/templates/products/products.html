@@ -62,13 +62,9 @@
                                     <div class="card-footer bg-white pt-0 border-0 text-left">
                                         <div class="row">
                                             {% if product.old_price %}
-                                            <div class="col">
-                                                <p class="mb-0 text-left text-muted font-weight-bold strikethrough">€{{ product.old_price }}</p>
-                                            </div>
+                                                <p class="mb-0 text-right text-muted font-weight-bold strikethrough">€{{ product.old_price }}</p>
                                             {% endif %}
-                                            <div class="col">
                                                 <p class="lead mb-0 text-right font-weight-bold highlight-color">€{{ product.price }}</p>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

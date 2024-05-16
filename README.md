@@ -57,7 +57,14 @@ required.
 
 - ### Products
 ![image of products page](https://i.ibb.co/x8HwGkK/2024-05-16-09-25-44.png)
-The products page shows the user 
+The products page shows the user available products. They can be shown by categories,
+sorted by price or filtered by brand. The user can add products to the bag and when he's
+happy with his order - tu purchase it, using Stripe payments.
+
+- ### Bag
+The shopping bag feature allows a user to see what he picked, price, quantity and total cost.
+A user can change quantity of an item or remove it from the bag if he changed his mind.
+
 
 
 
