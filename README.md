@@ -67,43 +67,34 @@ A user can change quantity of an item or remove it from the bag if he changed hi
 
 
 
-
-- ### Other features
-- Playlists 
-
-
+- ### Profile
+The registered user can navigate to his profile page, where he can update his personal information
+and view his order history
 
 
+- ### Site admin features
+The admin of the site do not have to use django administration panel to manage the store, subscriptions
+and lessons. It can be done on the related pages of the web site.
 
-A section of the web site 
-## Codeanywhere Reminders
+<hr>
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+<h2> Testing </h2>
 
-`python3 -m http.server`
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+The website has been tested manually during the development process and using the PyCharm builtin 
+functions. 
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+<hr>
 
-`http_server`
+<h2> Deployment </h2>
+The website was deployed to Heroku, using the ElephantSQL cloud database and Cloudinary for images hosting
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+<hr>
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+<h2> Improvements </h2>
+Working on the project and facing high pressure of the deadline I had to leave a few things for future
+implementation. 
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
----
-
-Happy coding!
+- to show the user the time left on his subscription
+- email reminders to renew the subscription
+- subscription information in user profile
