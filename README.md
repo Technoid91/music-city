@@ -56,30 +56,32 @@ the user will only need his credit card as this is an online service, no deliver
 required. 
 
 - ### Products
-![image of products page](https://i.ibb.co/x8HwGkK/2024-05-16-09-25-44.png)
+![image of products page](https://i.ibb.co/n84Dd1D/2024-05-16-10-10-53.png)
 The products page shows the user available products. They can be shown by categories,
 sorted by price or filtered by brand. The user can add products to the bag and when he's
 happy with his order - tu purchase it, using Stripe payments.
 
-- ### Bag
+- ### Shopping Bag
+- ![image of the bag section](https://i.ibb.co/hYYFMwm/2024-05-16-10-13-03.png)
 The shopping bag feature allows a user to see what he picked, price, quantity and total cost.
 A user can change quantity of an item or remove it from the bag if he changed his mind.
 
 
 
-- ### Profile
+- ### User profile Page
+![image of profile section](https://i.ibb.co/DpzQwf5/2024-05-16-10-14-36.png)
 The registered user can navigate to his profile page, where he can update his personal information
 and view his order history
 
 
 - ### Site admin features
+![image of the ux admin feature](https://i.ibb.co/QdbRysf/2024-05-16-10-16-01.png)
 The admin of the site do not have to use django administration panel to manage the store, subscriptions
 and lessons. It can be done on the related pages of the web site.
 
 <hr>
 
 <h2> Testing </h2>
-
 
 The website has been tested manually during the development process and using the PyCharm builtin 
 functions. 
