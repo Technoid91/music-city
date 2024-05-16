@@ -24,7 +24,6 @@ def check_subscription(request):
             else:
                 current_user.subscribed = False
                 current_user.save()
-                # messages.error(request, "Your subscription is expired. Please get a new one")
 
             if current_user.subscribed:
                 return redirect('lessons')
@@ -254,7 +253,7 @@ def add_playlist(request):
 
 @login_required
 def edit_lesson(request, lesson_id):
-    """ Edit a product in the store """
+    """ Edit a lesson """
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
@@ -284,7 +283,7 @@ def edit_lesson(request, lesson_id):
 
 @login_required
 def delete_lesson(request, lesson_id):
-    """ Delete a product from the store """
+    """ Delete lesson from the playlist """
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
@@ -298,7 +297,7 @@ def delete_lesson(request, lesson_id):
 
 @login_required
 def delete_playlist(request, playlist_id):
-    """ Delete a product from the store """
+    """ Delete playlist """
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')

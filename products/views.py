@@ -45,7 +45,6 @@ def show_products(request):
             brand = request.GET['brand']
             products = products.filter(brand=brand)
 
-
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:

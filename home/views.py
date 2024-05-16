@@ -5,6 +5,7 @@ from lessons.models import Subscription
 
 
 def index(request):
+    """ Render the home page with products with special prices """
     products = Product.objects.filter(old_price__isnull=False)
     products_amount = products.count()
     if products_amount > 3:

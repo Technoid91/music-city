@@ -93,20 +93,14 @@
     <script>
         $(document).ready(function() {
             $('.toggle-lessons').on('click', function() {
-                console.log('Клик на кнопке');
 
                 var $chevronDown = $(this).find('.fa-chevron-down');
                 var $chevronUp = $(this).find('.fa-chevron-up');
 
-                console.log('$chevronDown:', $chevronDown);
-                console.log('$chevronUp:', $chevronUp);
-
                 if ($chevronDown.hasClass('d-none')) {
-                    console.log('Переключаем иконку на вверх');
                     $chevronDown.removeClass('d-none');
                     $chevronUp.addClass('d-none');
                 } else {
-                    console.log('Переключаем иконку на вниз');
                     $chevronDown.addClass('d-none');
                     $chevronUp.removeClass('d-none');
                 }

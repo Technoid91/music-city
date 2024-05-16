@@ -3,7 +3,6 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 
 
-
 class Subscription(models.Model):
     name = models.CharField(max_length=40)
     description = models.TextField()

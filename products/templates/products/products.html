@@ -40,7 +40,6 @@
             </div>
             <div class="col-lg-10 col-sm-12">
                 <div class="product-container col-10 offset-1">
-                    <div class="row mt-1 mb-2"></div>                  <!-- ????? -->
                     <div class="row">
                         {% for product in products %}
                             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
@@ -64,7 +63,7 @@
                                         <div class="row">
                                             {% if product.old_price %}
                                             <div class="col">
-                                                <p class="lead mb-0 text-left text-muted font-weight-bold strikethrough">€{{ product.old_price }}</p>
+                                                <p class="mb-0 text-left text-muted font-weight-bold strikethrough">€{{ product.old_price }}</p>
                                             </div>
                                             {% endif %}
                                             <div class="col">

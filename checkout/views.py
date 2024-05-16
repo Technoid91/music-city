@@ -31,6 +31,8 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+    """ Shows checkout form and handles payments """
+
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
