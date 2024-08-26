@@ -17,7 +17,7 @@ def index(request):
 
     subject = "Your Subject"
     body = "This is a test email."
-    recipient_email = "recipient@example.com"
+    recipient_email = "technoid91@gmail.com"
 
     # Создаем сообщение
     msg = MIMEMultipart()
@@ -33,8 +33,9 @@ def index(request):
         # Отправляем письмо
         server.sendmail(settings.EMAIL_HOST_USER, recipient_email, msg.as_string())
         server.quit()
-    except:
-        pass
+        print("Test email sent successfully.")
+    except Exception as e:
+        print(f"Failed to send email: {str(e)}")
 
 
     products = Product.objects.filter(old_price__isnull=False)
