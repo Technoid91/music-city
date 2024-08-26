@@ -27,12 +27,12 @@ def index(request):
     msg.attach(MIMEText(body, 'plain'))
 
     try:
-        # Устанавливаем соединение с сервером
-        server = smtplib.SMTP_SSL(settings.EMAIL_HOST, settings.EMAIL_PORT)
-        server.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
-        # Отправляем письмо
-        server.sendmail(settings.EMAIL_HOST_USER, recipient_email, msg.as_string())
-        server.quit()
+        # Устанавливаем соединение с сервером через TLS
+        with smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT) as server:
+            server.starttls()  # Устанавливаем защищенное соединение
+            server.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
+            # Отправляем письмо
+            server.sendmail(settings.EMAIL_HOST_USER, recipient_email, msg.as_string())
         print("Test email sent successfully.")
     except Exception as e:
         print(f"Failed to send email: {str(e)}")
