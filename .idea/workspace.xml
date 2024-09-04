@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="cab23b05-0bfb-409b-b1aa-64cd328141e5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/music_city/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/music_city/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/music_city/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/music_city/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staticfiles/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/staticfiles/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,10 +172,10 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/img" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/products/templates/products" />
       <recent name="$PROJECT_DIR$/checkout/static/checkout/js" />
-      <recent name="$PROJECT_DIR$/static/img" />
       <recent name="$PROJECT_DIR$/media" />
     </key>
   </component>

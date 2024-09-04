@@ -199,21 +199,21 @@ header {
     }
 
 footer {
-    height: 8rem;
     color: #e67300;
     background-color: #444;
     padding: 15px;
-    /*position: static;*/
-    /*bottom: 0;*/
 }
 
-.social-links i {
-    margin: 0.3rem 0.3rem;
+.social-links {
+    font-size: 60%;
 }
-.social-links i:hover {
-    color: white;
-    font-size: 2.3rem;
-    margin: 0 0.15rem;
+.useful-links {
+    color: #e67300;
+}
+
+.useful-links:hover {
+    color: #fff;
+    text-decoration: none;
 }
 /* LESSONS */
 
@@ -246,7 +246,7 @@ footer {
 }
 
 .container-lesson {
-    height: 30rem;
+    height: 20rem;
     width: auto;
 }
 
@@ -496,8 +496,10 @@ thead {
     border: 2px solid #e67300;
 }
 
-.btn-size {
-    min-width: 7rem;
+.btn-responsive {
+    min-width: 3rem;
+    font-size: 70%;
+    padding: 0 5px;
 }
 
 .btn-back:hover {
@@ -523,6 +525,17 @@ thead {
 }
 
 
+.bg-404 {
+    padding-top: 5%;
+    color: #e67300;;
+    background-image: url('/static/img/404page.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Высота элемента занимает 100% высоты видимой части окна */
+
+}
+
 /* ------------------------------------------ MEDIA QUERIES */
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
@@ -539,6 +552,22 @@ thead {
         right: 0;
         left: 0;
         z-index: 1030;
+    }
+
+    .social-links i {
+        font-size: 2rem;
+        margin: 0.3rem 0.3rem;
+    }
+    .social-links i:hover {
+        color: white;
+        font-size: 2.3rem;
+        margin: 0 0.15rem;
+    }
+
+    .btn-responsive {
+        min-width: 6rem;
+        font-size: 100%;
+        padding: .5rem 1rem;
     }
 
     .text-responsive {
@@ -565,6 +594,10 @@ thead {
         bottom: 0;
         left: 0;
         margin: auto 0;
+    }
+    .container-lesson {
+        height: 30rem;
+        width: auto;
     }
 }
 
