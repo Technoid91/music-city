@@ -10,17 +10,24 @@ import stripe
 
 
 def check_subscription(request):
-    """ Checks if the user has a subscription and based on result shows subscriptions or lessons """
+    """
+    Checks if the user has a subscription
+    and based on result shows subscriptions or lessons
+    """
 
     if request.user.is_authenticated:
         try:
             current_user = UserSubscription.objects.get(user=request.user)
 
             if current_user.expiry_date:
-                if current_user.expiry_date < datetime.now().date():  # Checking if the subscription is expired
+                # Checking if the subscription is expired
+                if current_user.expiry_date < datetime.now().date():
                     current_user.subscribed = False
                     current_user.save()
-                    messages.error(request, "Your subscription is expired. Please get a new one")
+                    messages.error(
+                        request, "Your subscription is expired. "
+                                 "Please get a new one"
+                    )
             else:
                 current_user.subscribed = False
                 current_user.save()
@@ -29,14 +36,21 @@ def check_subscription(request):
                 return redirect('lessons')
         except UserSubscription.DoesNotExist:
             pass
-    if request.user.is_superuser:  # Show all subscriptions to the admin (including disabled)
+    # Show all subscriptions to the admin (including disabled)
+    if request.user.is_superuser:
         subscriptions = Subscription.objects.all().order_by('duration')
     else:
-        subscriptions = Subscription.objects.filter(is_active=True).order_by('duration')
+        subscriptions = Subscription.objects.filter(
+            is_active=True
+        ).order_by('duration')
         if request.user.is_authenticated:
-            had_subscription = UserSubscription.objects.filter(user=request.user).first()
+            had_subscription = UserSubscription.objects.filter(
+                user=request.user
+            ).first()
             if had_subscription:
-                subscriptions = Subscription.objects.filter(is_active=True).exclude(price=0).order_by('duration')
+                subscriptions = Subscription.objects.filter(
+                    is_active=True
+                ).exclude(price=0).order_by('duration')
     context = {
         'subscriptions': subscriptions,
     }
@@ -50,8 +64,8 @@ def buy_subscription(request, subscription_id):
     subscription = Subscription.objects.get(id=subscription_id)
 
     if request.method == 'GET':
-
-        if not subscription.is_active:  # prevent user from choosing inactive subscription in URL
+        # prevent user from choosing inactive subscription in URL
+        if not subscription.is_active:
             messages.error(request, "Subscription doesn't exist ")
             return redirect('check_subscription')
 
@@ -77,12 +91,16 @@ def buy_subscription(request, subscription_id):
         # Free subscription handler
         else:
             if not request.user.is_authenticated:
-                messages.info(request, 'Please login or signup to get your free subscription')
+                messages.info(request, 'Please login or signup to get '
+                                       'your free subscription')
                 return redirect(request.META.get('HTTP_REFERER', '/'))
-            existing_subscription = UserSubscription.objects.filter(user=request.user).first()
+            existing_subscription = UserSubscription.objects.filter(
+                user=request.user
+            ).first()
             # If user has been subscribed already
             if existing_subscription:
-                messages.error(request, 'Sorry, this subscription is no longer available')
+                messages.error(request, 'Sorry, this subscription '
+                                        'is no longer available')
                 return redirect(request.META.get('HTTP_REFERER', '/'))
             else:
                 # Activation of the free subscription (once for each user)
@@ -91,20 +109,28 @@ def buy_subscription(request, subscription_id):
                     subscribed=True,
                     subscription_name=subscription.name,
                     start_date=datetime.now().date(),
-                    expiry_date=datetime.now().date() + timedelta(days=subscription.duration)
+                    expiry_date=datetime.now().date() + timedelta(
+                        days=subscription.duration
+                    )
                 )
-                messages.success(request, 'Your free subscription is active now!')
+                messages.success(request, 'Your free subscription '
+                                          'is active now!')
                 return redirect('lessons')
 
     else:
         if request.user.is_authenticated:
-            existing_subscription = UserSubscription.objects.filter(user=request.user).first()
+            existing_subscription = UserSubscription.objects.filter(
+                user=request.user
+            ).first()
 
             if existing_subscription:
                 existing_subscription.subscription_name = subscription.name
                 existing_subscription.subscribed = True
                 existing_subscription.start_date = datetime.now().date()
-                existing_subscription.expiry_date = datetime.now().date() + timedelta(days=subscription.duration)
+                existing_subscription.expiry_date = (
+                        datetime.now().date() +
+                        timedelta(days=subscription.duration)
+                )
                 existing_subscription.save()
             else:
                 UserSubscription.objects.create(
@@ -112,7 +138,9 @@ def buy_subscription(request, subscription_id):
                     subscribed=True,
                     subscription_name=subscription.name,
                     start_date=datetime.now().date(),
-                    expiry_date=datetime.now().date() + timedelta(days=subscription.duration)
+                    expiry_date=datetime.now().date() + timedelta(
+                        days=subscription.duration
+                    )
                 )
             messages.success(request, 'Subscription purchased!')
             return redirect('lessons')
@@ -128,7 +156,9 @@ def show_lessons(request):
         subscriptions = Subscription.objects.all()
         if current_user.subscribed:
             lessons = Lesson.objects.all().order_by('number')
-            playlists = Playlist.objects.filter(lesson__isnull=False).distinct()
+            playlists = Playlist.objects.filter(
+                lesson__isnull=False
+            ).distinct()
 
             all_playlists = Playlist.objects.all()
 
@@ -187,7 +217,6 @@ def lesson(request, lesson_id):
     else:
         video_id = None
 
-
     context = {
         'lesson': current_lesson,
         'video_id': video_id,
@@ -197,6 +226,7 @@ def lesson(request, lesson_id):
         'previous_lesson': previous_lesson,
     }
     return render(request, 'lessons/lesson.html', context)
+
 
 @login_required
 def add_lesson(request):
@@ -213,7 +243,8 @@ def add_lesson(request):
             messages.success(request, 'Successfully added lesson!')
             return redirect(reverse('add_lesson'))
         else:
-            messages.error(request, 'Failed to add lesson. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add lesson. '
+                                    'Please ensure the form is valid.')
     else:
         form = LessonForm()
 
@@ -240,7 +271,8 @@ def add_playlist(request):
             messages.success(request, 'Successfully added playlist!')
             return redirect(reverse('add_playlist'))
         else:
-            messages.error(request, 'Failed to add playlist. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add playlist. '
+                                    'Please ensure the form is valid.')
     else:
         form = PlaylistForm()
 
@@ -250,6 +282,7 @@ def add_playlist(request):
     }
 
     return render(request, template, context)
+
 
 @login_required
 def edit_lesson(request, lesson_id):
@@ -267,7 +300,8 @@ def edit_lesson(request, lesson_id):
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[lesson.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(request, 'Failed to update product. '
+                                    'Please ensure the form is valid.')
     else:
         form = LessonForm(instance=lesson)
         messages.info(request, f'You are editing {lesson.name}')
@@ -324,7 +358,8 @@ def add_subscription(request):
             messages.success(request, 'Successfully added subscription!')
             return redirect(reverse('add_subscription'))
         else:
-            messages.error(request, 'Failed to add subscription. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add subscription. '
+                                    'Please ensure the form is valid.')
     else:
         form = ManageSubscriptionForm()
 
@@ -334,6 +369,7 @@ def add_subscription(request):
     }
 
     return render(request, template, context)
+
 
 @login_required
 def edit_subscription(request, subscription_id):
@@ -345,13 +381,16 @@ def edit_subscription(request, subscription_id):
 
     subscription = get_object_or_404(Subscription, pk=subscription_id)
     if request.method == 'POST':
-        form = ManageSubscriptionForm(request.POST, request.FILES, instance=subscription)
+        form = ManageSubscriptionForm(
+            request.POST, request.FILES, instance=subscription
+        )
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated subscription!')
             return redirect(reverse('lessons'))
         else:
-            messages.error(request, 'Failed to update subscription. Please ensure the form is valid.')
+            messages.error(request, 'Failed to update subscription. '
+                                    'Please ensure the form is valid.')
     else:
         form = ManageSubscriptionForm(instance=subscription)
         messages.info(request, f'You are editing {subscription.name}')
@@ -377,6 +416,3 @@ def delete_subscription(request, subscription_id):
     chosen_subscription.delete()
     messages.success(request, 'Subscription deleted!')
     return redirect('lessons')
-
-
-

@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
 
-    #other
+    # other
     'crispy_forms',
     'cloudinary'
 ]
@@ -108,7 +108,7 @@ WSGI_APPLICATION = 'music_city.wsgi.application'
 
 
 # Database
-if  'DATABASE_URL' in os.environ:
+if 'DATABASE_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }

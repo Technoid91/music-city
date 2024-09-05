@@ -14,7 +14,6 @@ class UserSubscriptionAdmin(admin.ModelAdmin):
     ordering = ('subscribed', 'start_date')
 
 
-
 class LessonAdmin(admin.ModelAdmin):
     list_display = (
         'playlist',
@@ -22,7 +21,7 @@ class LessonAdmin(admin.ModelAdmin):
         'name',
     )
 
-    ordering= ('playlist', 'number',)
+    ordering = ('playlist', 'number',)
 
 
 class PlaylistAdmin(admin.ModelAdmin):

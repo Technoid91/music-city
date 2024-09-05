@@ -8,7 +8,9 @@ class Subscription(models.Model):
     description = models.TextField()
     duration = models.IntegerField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    promotional_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
+    promotional_price = models.DecimalField(max_digits=6,
+                                            decimal_places=2,
+                                            null=True, blank=True)
     is_active = models.BooleanField(default=True)
     image = CloudinaryField('image', default=None, null=True, blank=True)
 
@@ -33,7 +35,8 @@ class UserSubscription(models.Model):
 
 class Lesson(models.Model):
     name = models.CharField(max_length=50)
-    playlist = models.ForeignKey('Playlist', null=True, blank=True, on_delete=models.SET_NULL)
+    playlist = models.ForeignKey('Playlist', null=True,
+                                 blank=True, on_delete=models.SET_NULL)
     number = models.IntegerField()
     cover_image = CloudinaryField('image', null=True, blank=True)
     img_url = models.URLField(max_length=1024, null=True, blank=True)
@@ -53,4 +56,3 @@ class Playlist(models.Model):
 
     def get_friendly_name(self):
         return self.friendly_name
-

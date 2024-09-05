@@ -1,6 +1,7 @@
 from django import forms
 from .models import Subscription, Playlist, Lesson
 
+
 class SubscriptionForm(forms.Form):
     stripe_token = forms.CharField(widget=forms.HiddenInput())
 
@@ -31,7 +32,3 @@ class ManageSubscriptionForm(forms.ModelForm):
     class Meta:
         model = Subscription
         fields = '__all__'
-
-
-
-

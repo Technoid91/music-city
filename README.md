@@ -1,19 +1,30 @@
-<h1> Music City </h1>
+# Music City
 <hr>
 
 Music City - is a web platform for guitar players. 
 It contains lessons of how to play the guitar, available 
 on subscription, and products for guitar players of all levels.
 
-<hr>
-<h2>Features</h2>
 
+## UX
+<hr>
+
+### Colour scheme
+
+- `#000` used for primary text
+- `#e67300` used for higlights
+- `#fff` used for secondary text
+- `#444`, `#555`, `#888`,`#999`, `#ddd` were used for background colours
+
+
+## Features
+<hr>
 
 - ### Responsive design
 ![responsive design image](https://i.ibb.co/H2LGvmb/resp.png)
 
-The website is designed to work properly on screens of all popular sizes
-
+Using Bootstrap and custom CSS make the web application look good
+both on mobile devices and desktop screens.
 
 
  - ### Homepage
@@ -67,7 +78,6 @@ The shopping bag feature allows a user to see what he picked, price, quantity an
 A user can change quantity of an item or remove it from the bag if he changed his mind.
 
 
-
 - ### User profile Page
 ![image of profile section](https://i.ibb.co/DpzQwf5/2024-05-16-10-14-36.png)
 The registered user can navigate to his profile page, where he can update his personal information
@@ -81,19 +91,95 @@ and lessons. It can be done on the related pages of the web site.
 
 <hr>
 
-<h2> Testing </h2>
+## Testing
+<hr>
 
-The website has been tested manually during the development process and using the PyCharm builtin 
-functions. 
+### Code validation
+<hr>
+
+- ### HTML
+For HTML validation I have used [W3C Validator](https://validator.w3.org/)
+
+
+| Result for page                                                                                                           | Errors                                                         |
+|---------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| [Home](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmusic-city-d688a3a37a92.herokuapp.com%2F)                           | No errors                                                      |
+| [Subscriptions](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmusic-city-d688a3a37a92.herokuapp.com%2Flessons%2Fsubscription%2F) | No errors                                                      |
+| [Products](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmusic-city-d688a3a37a92.herokuapp.com%2Fproducts%2F)         | No errors |
+| [Sign Up](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmusic-city-d688a3a37a92.herokuapp.com%2Faccounts%2Fsignup%2F)         | No errors                                                      |
+| [Log In](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmusic-city-d688a3a37a92.herokuapp.com%2Faccounts%2Flogin%2F)     | No errors                                                      |
+
+- ### CSS
+For CSS validation I have used [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator/)
+
+No errors found
+
+- ### Python
+All python files passed CI Python Linter with no issues.
 
 <hr>
 
-<h2> Deployment </h2>
-The website was deployed to Heroku, using the ElephantSQL cloud database and Cloudinary for images hosting
+## Manual Testing
 
 <hr>
 
-<h2> Improvements </h2>
+### Home page
+
+
+- user role
+
+| Action                                                      | Before                                | After                                              | Result  |
+|-------------------------------------------------------------|---------------------------------------|----------------------------------------------------|---------|
+| Click on logo                                               | Any page of website                   | Homepage renders                                   | Test Success |
+| Click on 'Home' at the navbar                               | Any page of website                   | Homepage renders                                   | Test Success |
+| Hover over the news headings at the left part of the page   | Grey background                       | Brown background                                   | Test Success |
+| Click the news heading at the left part of the page         | News banners change change each other | The banner with the same heading and image appears | Test Success |
+| Click on 'My bookings' at the navbar (unregistered)         | Any page of website                   | Sign Up page renders                               | Test Success |
+
+
+
+
+
+## Deployment
+<hr>
+
+### ElephantSQL Database
+
+For the database I have used [ElephantSQL](https://www.elephantsql.com/) cloud service.
+It uses PostgreSQL 13.12 version
+
+### Cloudinary media hosting
+For images I have used [Cloudinary](https://cloudinary.com/) which provides cloud based sollution
+
+### Heroku Deployment
+The web application was deployed on Heroku, service providing cloud based server for the web-application running.
+Deployment steps are as follows, after account setup:
+
+- Select New in the top-right corner of your Heroku Dashboard, and select Create new app from the dropdown menu.
+- Your app name must be unique, and then choose a region closest to you (EU or USA), and finally, select Create App.
+- From the new app Settings, click Reveal Config Vars, and set your environment variables.
+
+| Key | Value            |
+| --- |------------------|
+| `DATABASE_URL` | user's own value |
+| `CLOUDINARY_URL` | user's own value |
+| `EMAIL_HOST_PASS`  | user's own value |
+| `EMAIL_HOST_USER`  | user's own value |
+|  `SECRET_KEY`   | user's own value |
+|  `STRIPE_PUBLIC_KEY`   | user's own value |
+|  `STRIPE_SECRET_KEY`   | user's own value |
+|  `STRIPE_WH_SECRET`   | user's own value |
+
+
+Heroku needs two additional files in order to deploy properly.
+- requirements.txt
+- Procfile
+
+Connect the git repository to Heroku and deploy from branch.
+
+## Improvement
+<hr>
+
 Working on the project and facing high pressure of the deadline I had to leave a few things for future
 implementation. 
 
