@@ -297,10 +297,10 @@ def edit_lesson(request, lesson_id):
         form = LessonForm(request.POST, request.FILES, instance=lesson)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Successfully updated product!')
-            return redirect(reverse('product_detail', args=[lesson.id]))
+            messages.success(request, 'Successfully updated lesson!')
+            return redirect(reverse('lesson', args=[lesson.id]))
         else:
-            messages.error(request, 'Failed to update product. '
+            messages.error(request, 'Failed to update lesson. '
                                     'Please ensure the form is valid.')
     else:
         form = LessonForm(instance=lesson)
@@ -337,7 +337,7 @@ def delete_playlist(request, playlist_id):
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
-    chosen_playlist = get_object_or_404(Lesson, pk=playlist_id)
+    chosen_playlist = get_object_or_404(Playlist, pk=playlist_id)
     chosen_playlist.delete()
     messages.success(request, 'Playlist deleted!')
     return redirect(reverse('lessons'))
