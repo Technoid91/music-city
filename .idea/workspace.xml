@@ -7,6 +7,9 @@
     <list default="true" id="cab23b05-0bfb-409b-b1aa-64cd328141e5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/allauth/account/email/email_confirmation_message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/email/email_confirmation_message.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/email/email_confirmation_subject.txt" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/email/email_confirmation_subject.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/email/password_reset_key_message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/email/password_reset_key_message.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/email/password_reset_key_subject.txt" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/email/password_reset_key_subject.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
