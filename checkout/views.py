@@ -5,6 +5,9 @@ from django.shortcuts import (
     get_object_or_404,
     HttpResponse
 )
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -166,6 +169,24 @@ def checkout_success(request, order_number):
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
+
+    # Prepare email confirmation
+    email_subject = f"Order Confirmation - {order_number}"
+    email_template = 'checkout/confirmation_email.html'
+    html_message = render_to_string(email_template, {'order': order})
+    plain_message = strip_tags(html_message)  # Create a plain-text version of the email
+    from_email = settings.DEFAULT_FROM_EMAIL
+    to_email = order.email
+
+    # Sending confirmation email
+    send_mail(
+        email_subject,
+        plain_message,
+        from_email,
+        [to_email],
+        html_message=html_message,
+        fail_silently=False,  # Set to False to catch any errors during sending
+    )
 
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
