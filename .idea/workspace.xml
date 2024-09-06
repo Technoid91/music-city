@@ -6,18 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cab23b05-0bfb-409b-b1aa-64cd328141e5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CI Facebook Mockup.png" beforeDir="false" afterPath="$PROJECT_DIR$/facebook_mockup.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desired README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lessons/templates/lessons/add_subscription.html" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/templates/lessons/add_subscription.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lessons/templates/lessons/buy_subscription.html" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/templates/lessons/buy_subscription.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lessons/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/lessons/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/templates/products/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/templates/products/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staticfiles/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/staticfiles/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/allauth/account/email/email_confirmation_message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/templates/allauth/account/email/email_confirmation_message.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
