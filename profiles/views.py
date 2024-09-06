@@ -3,6 +3,7 @@ from django.contrib import messages
 
 from .models import UserProfile
 from .forms import UserProfileForm
+from newsletter.models import NewsSubscriber
 
 from checkout.models import Order
 
@@ -19,10 +20,16 @@ def profile(request):
 
     form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
+    if request.user.is_authenticated:
+        email = request.user.email
+        newsletter = NewsSubscriber.objects.filter(email=email).exists()
+    else:
+        newsletter = False
 
     template = 'profiles/profile.html'
     context = {
         'form': form,
+        'newsletter': newsletter,
         'orders': orders,
         'on_profile_page': True
     }

@@ -171,7 +171,7 @@ def checkout_success(request, order_number):
                 user_profile_form.save()
 
     # Prepare email confirmation
-    email_subject = f"Order Confirmation - {order_number}"
+    email_subject = f"[Music City] - Order confirmation"
     email_template = 'checkout/confirmation_email.html'
     html_message = render_to_string(email_template, {'order': order})
     plain_message = strip_tags(html_message)  # Create a plain-text version of the email
