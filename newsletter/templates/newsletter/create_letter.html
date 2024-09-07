@@ -16,20 +16,22 @@
                 <div class="product-header mb-4">
                     <h2 class="text-uppercase text-black">Send email to subscribed users</h2>
                 </div>
-                <div class="light-bg rounded p-3">
+                <div class="light-bg rounded p-3 mb-3">
                     <form method="post" class="mt-3">
                         {% csrf_token %}
-                        <div class="form-group">
+                        <div class="form-group mx-5">
                             <input type="text" name="subject" class="form-control"
                                    aria-label="Subject field" placeholder="Subject"
                                    value="{{ form.subject.value|default_if_none:'' }}">
                         </div>
-                        <div class="form-group">
-                            <textarea name="body" class="form-control"
+                        <div class="form-group mx-5">
+                            <textarea name="body" class="newsletter-body p-3"
                                       aria-label="Body of the letter"
                                       placeholder="Type here">{{ form.body.value|default_if_none:'' }}</textarea>
                         </div>
-                        <button type="submit" class="btn btn-main">Send</button>
+                        <div class="mx-5 text-right">
+                            <button type="submit" class="btn btn-main">Send</button>
+                        </div>
                     </form>
                 </div>
             </div>

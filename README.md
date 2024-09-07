@@ -2,9 +2,13 @@
 <hr>
 
 Music City - is a web platform for guitar players. 
-It contains lessons of how to play the guitar, available 
-on subscription, and products for guitar players of all levels.
-
+It provides not only music instruments for sale, but the lessons of 
+how to play the guitar as well. Each lesson may include picture, text
+and video. And the lessons are grouped in playlists for easier navigation.
+To get access to this functionality the user should purchase one
+of the available subscriptions or try demo subscription for free.
+The lessons may be used to promote the instruments and accessories and
+enhance the company sells.
 
 ## UX
 <hr>
@@ -60,11 +64,18 @@ As mentioned, the lessons available on subscription only. If a user without a
 subscription clicks on 'lessons' on the menu, he will be redirected to the page
 with subscriptions.
 ![image of subscription page](https://i.ibb.co/7JCmq89/2024-05-16-09-19-57.png)
-To allow a user to 'try it before buy it' the options with free 7 days subscription is
-included. The user can use it only once. If the database with subscribed users contains
+We recommend to leave one free
+subscription to provide the user with the opportunity to try it (and fall in love with
+our lessons) before buying the subscription.
+The user can use it only once. If the database with subscribed users contains
 a record, the option of free subscription will not be shown. To purchase subscription,
 the user will only need his credit card as this is an online service, no delivery info
 required. 
+The site admin can manage the subscriptions: name, corresponding image, description, 
+price, promotional price (optionally) and duration. 
+Additionally, the site admin can hide the subscription, for example, the time limited
+special offer. It allows admin to keep it for future, instead of deleting and creating
+it again.
 
 - ### Products
 ![image of products page](https://i.ibb.co/n84Dd1D/2024-05-16-10-10-53.png)
@@ -82,6 +93,18 @@ A user can change quantity of an item or remove it from the bag if he changed hi
 ![image of profile section](https://i.ibb.co/DpzQwf5/2024-05-16-10-14-36.png)
 The registered user can navigate to his profile page, where he can update his personal information
 and view his order history
+
+- ### Newsletter
+![imags of newsletter subscription section](https://i.ibb.co/mhFvWk3/2024-09-06-17-22-45.png)
+The registered users can subscribe to the newsletter from Profile page. If the user is not subscribed to it, 
+there will be a brief instruction how to subscribe and the form to enter email address 
+(prefilled with the one user used to register) and 'Subscribe' button. If user is subscribed already,
+the instruction will be how to unsubscribe, same form and 'Unsubscribe' button. This functionality creates or
+removes entry from database. 
+
+Site admin can send a letter to all subscribed users by choosing 'Send a newsletter' option in dropdown menu
+of the user icon in the header. It opens the page with subject and body field with button 'Send' in the bottom.
+![image of the newsletter creating page](https://i.ibb.co/1RXfLFg/2024-09-07-10-15-06.png)
 
 
 - ### Site admin features
@@ -409,3 +432,6 @@ implementation.
 - to show the user the time left on his subscription
 - email reminders to renew the subscription
 - subscription information in user profile
+- more complex form for sending newsletter including text formatting features.
+- promo-code functionality (e.g. user with the subscription for lessons can get
+a promo-code from the lesson and get a discount on the guitar the teacher plays.)

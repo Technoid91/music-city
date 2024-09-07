@@ -524,6 +524,10 @@ thead {
     color: #aaa;
 }
 
+.newsletter-body {
+    height: 300px;
+}
+
 /* ------------------------------------------ MEDIA QUERIES */
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {

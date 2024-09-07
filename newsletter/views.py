@@ -7,8 +7,13 @@ from django.conf import settings
 from .models import NewsSubscriber
 from .forms import EmailForm
 
+
 @login_required
 def subscribe(request):
+    """
+    Creates a new entry in newsletter subscription database
+    "NewsSubscriber" which contains user name and email
+    """
     if request.method == 'POST':
         email = request.POST.get('email')
 
@@ -26,14 +31,24 @@ def subscribe(request):
 
 @login_required
 def unsubscribe(request):
+    """
+        Deletes user form the newsletter subscription database
+        "NewsSubscriber"
+    """
     if request.method == 'POST':
         email = request.POST.get('email')
         try:
-            subscriber = NewsSubscriber.objects.get(email=email, user=request.user)
+            subscriber = NewsSubscriber.objects.get(
+                email=email, user=request.user
+            )
             subscriber.delete()
-            messages.success(request, 'You have been unsubscribed from the newsletter.')
+            messages.success(
+                request, 'You have been unsubscribed from the newsletter.'
+            )
         except NewsSubscriber.DoesNotExist:
-            messages.info(request, 'You were not subscribed to the newsletter.')
+            messages.info(
+                request, 'You were not subscribed to the newsletter.'
+            )
         return redirect(request.META.get('HTTP_REFERER', 'default_view'))
 
     return render(request, 'newsletter/unsubscribe.html')
@@ -41,12 +56,18 @@ def unsubscribe(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def send_newsletter(request):
+    """
+        For admins only. Send the email to all users subscribed
+        to the newsletter. Takes subject and text from the form.
+    """
     if request.method == 'POST':
         form = EmailForm(request.POST)
         if form.is_valid():
             subject = form.cleaned_data['subject']
             body = form.cleaned_data['body']
-            subscribers = NewsSubscriber.objects.values_list('email', flat=True)
+            subscribers = NewsSubscriber.objects.values_list(
+                'email', flat=True
+            )
             send_mail(
                 subject,
                 body,
