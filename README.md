@@ -10,6 +10,51 @@ of the available subscriptions or try demo subscription for free.
 The lessons may be used to promote the instruments and accessories and
 enhance the company sells.
 
+## E-commerce business model
+<hr>
+Being the comprehensive web-application for selling physical and 
+intellectual products - music instruments, equipment and lessons 
+it requires however marketing techniques and strategies to be implemented
+to create a recognisable and successful brand.
+
+### Search Engine Optimization
+The website content is optimized for better ranking in search engines, however
+the site owner should provide each product with the full and easy to read description
+paying attention to using the key-words naturally inserted to the text.
+
+### Content marketing
+The main website content is lessons, so the site admin should keep them updated and make
+sure that new lessons adding. The best practise will be to have the playlists for guitar
+players of all levels and music of various styles. To make sure that the users will be
+interested in returning and keep their subscriptions active a good idea will be to create 
+a playlist with the site news, special offers for the subscribed users, catching videos
+with hints, advices and challenges. This playlist should be updated frequently, meaning
+that old videos are deleted and new ones uploaded.
+
+### Social media marketing
+It's important to post content to the social media on regular basis. Our customers are 
+creative people, not only professional musicians, but amateurs and beginners as well,
+so it's important to keep their interest to the platform by posting videos of tutorials
+how to play popular and viral songs, posts about famous musicians and bands etc. It's a 
+good way to communicate with the potential customers and create positive, diverse, and
+friendly community.
+
+### Email marketing
+The web application provides site owner with the newsletter functionality for building 
+email sale strategy.
+
+Newsletter emails should be informative and catching, bringing the users attention to
+the targeted products. It's important to avoid frequent emails, which may be considered 
+spam and make users to unsubscribe from the newsletter. A good practise will be to provide
+the subscribed users with the special offers, not available for the rest. For example, free
+branded merch when buying something, unique posts etc.
+
+### Influencer marketing
+Another way to enhance interest to the brand is collaboration with bloggers and YouTube,
+Instagram advertise. Being mentioned in music blogger video may bring the most relevant
+users to the platform.
+
+
 ## UX
 <hr>
 
