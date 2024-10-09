@@ -10,6 +10,15 @@ of the available subscriptions or try demo subscription for free.
 The lessons may be used to promote the instruments and accessories and
 enhance the company sells.
 
+The purpose of the application is to create handy platform for musicians, where 
+they can buy musical instruments, equipment and accessories, and also to learn 
+how to play the guitar. 
+
+What sets this platform apart is its unique combination of offering both musical
+instruments and music lessons in one place. Users have access to everything they 
+need, from purchasing instruments to learning how to play them, all within a single, 
+integrated platform.
+
 ## E-commerce business model
 <hr>
 Being the comprehensive web-application for selling physical and 
@@ -65,6 +74,8 @@ users to the platform.
 - `#fff` used for secondary text
 - `#444`, `#555`, `#888`,`#999`, `#ddd` were used for background colours
 
+### Design mockups for desktop and mobile views
+![image of draft mockups](https://i.ibb.co/JKNsYYR/IMG-6864.jpg)
 
 ## Features
 <hr>
@@ -159,6 +170,132 @@ and lessons. It can be done on the related pages of the web site.
 
 <hr>
 
+
+## Database Design
+
+![image of database structure](https://i.ibb.co/grbVH7C/2024-10-01-12-52-49.png)
+
+
+[LucidApp](https://lucid.app/lucidchart/ff0f4383-925c-4df7-a389-8f6034b68372/edit?invitationId=inv_0e2a15b2-6bab-4088-b676-c6bc89f11e7a) was used to create an ERD to visualise the tables within the database and their relationships.
+
+- ### Product 
+
+| ID          | Type            | Relation             |
+|-------------|-----------------|----------------------|
+| category    | ForeignKey      | FK to Category model |
+| sku         | CharField       |                      |
+| name        | CharField       |                      |
+| brand       | CharField       |                      |
+| description | CharField       |                      |
+| price       | DecimalField    |                      |
+| old_price   | DecimalField    |                      |
+| image_url   | URLField        |                      |
+| image       | CloudinaryField |                      |
+
+- ### Category 
+
+| ID            | Type      | Relation |
+|---------------|-----------|----------|
+| name          | CharField |          |
+| friendly_name | CharField |          |
+
+- ### Order 
+
+| ID              | Type          | Relation                |
+|-----------------|---------------|-------------------------|
+| order_number    | CharField     |                         |
+| user_profile    | ForeignKey    | FK to UserProfile model |
+| full_name       | CharField     |                         |
+| email           | EmailField    |                         |
+| phone_number    | CharField     |                         |
+| country         | CountryField  |                         |
+| postcode        | CharField     |                         |
+| town_or_city    | CharField     |                         |
+| street_address1 | CharField     |                         |
+| street_address2 | CharField     |                         |
+| county          | CharField     |                         |
+| date            | DateTimeField |                         |
+| delivery_cost   | DecimalField  |                         |
+| order_total     | DecimalField  |                         |
+| grand_total     | DecimalField  |                         |
+| original_bag    | TextField     |                         |
+| stripe_pid      | CharField     |                         |
+
+- ### OrderLineItem 
+
+| ID             | Type         | Relation            |
+|----------------|--------------|---------------------|
+| order          | ForeignKey   | FK to Order model   |
+| product        | ForeignKey   | FK to Product model |
+| quantity       | IntegerField |                     |
+| lineitem_total | DecimalField |                     |
+
+
+- ### Subscription 
+
+| ID                | Type            | Relation |
+|-------------------|-----------------|----------|
+| name              | CharField       |          |
+| description       | TextField       |          |
+| duration          | IntegerField    |          |
+| price             | DecimalField    |          |
+| promotional_price | DecimalField    |          |
+| is_active         | BooleanField    |          |
+| image             | CloudinaryField |          |
+
+- ### UserSubscription 
+
+| ID                | Type          | Relation         |
+|-------------------|---------------|------------------|
+| user              | OneToOneField | FK to User model |
+| subscribed        | BooleanField  |                  |
+| subscription_name | CharField     |                  |
+| start_date        | DateField     |                  |
+| expiry_date       | DateField     |                  |
+
+- ### Lesson 
+
+| ID          | Type            | Relation             |
+|-------------|-----------------|----------------------|
+| name        | CharField       |                      |
+| playlist    | ForeignKey      | FK to Playlist model |
+| number      | IntegerField    |                      |
+| cover_image | CloudinaryField |                      |
+| img_url     | URLField        |                      |
+| text        | TextField       |                      |
+| video_url   | URLField        |                      |
+
+
+- ### Playlist 
+
+| ID            | Type      | Relation             |
+|---------------|-----------|----------------------|
+| name          | CharField |                      |
+| friendly_name | CharField |                      |
+
+
+- ### UserProfile 
+
+| ID                       | Type          | Relation         |
+|--------------------------|---------------|------------------|
+| user                     | OneToOneField | FK to User model |
+| default_phone_number     | CharField     |                  |
+| default_street_address1  | CharField     |                  |
+| default_street_address2  | CharField     |                  |
+| default_town_or_city     | CharField     |                  |
+| default_county           | CharField     |                  |
+| default_postcode         | CharField     |                  |
+| default_country          | CountryField  |                  |
+
+
+- ### NewsSubscriber 
+
+| ID    | Type          | Relation         |
+|-------|---------------|------------------|
+| user  | OneToOneField | FK to User model |
+| email | EmailField    |                  |
+
+
 ## Testing
 <hr>
 
@@ -169,13 +306,13 @@ and lessons. It can be done on the related pages of the web site.
 For HTML validation I have used [W3C Validator](https://validator.w3.org/)
 
 
-| Result for page                     | Errors    |
-|-------------------------------------|-----------|
-| [Home](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmusic-city-d688a3a37a92.herokuapp.com%2F)     | No errors |
-| [Subscriptions](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmusic-city-d688a3a37a92.herokuapp.com%2Flessons%2Fsubscription%2F) | No errors |
-| [Products](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmusic-city-d688a3a37a92.herokuapp.com%2Fproducts%2F) | No errors |
-| [Sign Up](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmusic-city-d688a3a37a92.herokuapp.com%2Faccounts%2Fsignup%2F) | No errors |
-| [Log In](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmusic-city-d688a3a37a92.herokuapp.com%2Faccounts%2Flogin%2F) | No errors |
+| Result for page                                                                                                                    | Errors    |
+|------------------------------------------------------------------------------------------------------------------------------------|-----------|
+| [Home](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmusic-city-d688a3a37a92.herokuapp.com%2F)                                    | No errors |
+| [Subscriptions](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmusic-city-d688a3a37a92.herokuapp.com%2Flessons%2Fsubscription%2F)  | No errors |
+| [Products](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmusic-city-d688a3a37a92.herokuapp.com%2Fproducts%2F)                     | No errors |
+| [Sign Up](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmusic-city-d688a3a37a92.herokuapp.com%2Faccounts%2Fsignup%2F)             | No errors |
+| [Log In](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmusic-city-d688a3a37a92.herokuapp.com%2Faccounts%2Flogin%2F)               | No errors |
 
 - ### CSS
 For CSS validation I have used [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator/)
@@ -187,6 +324,35 @@ All python files passed CI Python Linter. All issues fixed:
 - line too long
 - no blank line in the end of the file
 - 2 blank lines expected found 1
+
+## User stories testing
+
+
+| User story                                                                                                                                                                             | Screenshot                                                                                        |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
+| As a site user I can create an account so that allows me to access my profile                                                                                                          | ![image of the registration section](https://i.ibb.co/zHJQcD8/2024-10-02-11-25-23.png)            |
+| As a site user I can login or logout so that gives me access to my information and special site features                                                                               | ![image of the sign in page](https://i.ibb.co/FJhm6j2/2024-10-02-11-27-31.png)                    |
+| As a site user I can recover my password so that allows me to set up a new password if I forgot it                                                                                     | ![image of the password reset page](https://i.ibb.co/ChxjKzp/2024-10-02-11-35-15.png)             |
+| As a site user I can receive an email when registering so that ensure that my email was set up correct                                                                                 | ![image of the verification email](https://i.ibb.co/b5msxtC/2024-10-02-11-38-35.png)              |
+| As a site user I can have a personal user profile so that allows me to view my personal information and activity history                                                               | ![image of the user profile page](https://i.ibb.co/5ck24nC/2024-10-02-11-40-36.png)               |
+| As a site user I can locate and use navigation panel so I can access different parts of the website                                                                                    | ![image of the navigation panel](https://i.ibb.co/QQjHhbh/2024-10-02-11-44-04.png)                |
+| As a site user I can see the subscription types so that allows me to chose one                                                                                                         | ![image of subscription page](https://i.ibb.co/7JCmq89/2024-05-16-09-19-57.png)                   |
+| As a site owner I can add, edit and hide subscriptions so that allows me to update subscription types                                                                                  | ![image of the subscription management section](https://i.ibb.co/vkxXnk7/2024-10-02-11-48-30.png) |
+| As a site owner I can see the subscribed users so that allows me to plan sells                                                                                                         | ![image of the subscribed users django panel](https://i.ibb.co/9VPD9Ky/2024-10-02-11-49-57.png)   |
+| As a site user I can navigate to the product page so I can browse thorough available products                                                                                          | ![image of the products page](https://i.ibb.co/H7J643J/2024-10-02-11-52-08.png)                   |
+| As a site user I can use the search form so that allows me to find a product faster                                                                                                    | ![image of the search bar](https://i.ibb.co/7RXvNxW/2024-10-02-11-43-44.png)                      |
+| As a site user I can filter the products by categories so that allows me to see the pool of products I'm interested in                                                                 | ![image of the product category bar](https://i.ibb.co/ydDzm4Q/2024-10-02-11-55-15.png)            |
+| As a site user I can sort products by brand so that allows me to chose among the products of the specific brand                                                                        | ![image of the brand filters](https://i.ibb.co/dt7vBdc/2024-10-02-11-56-35.png)                   |
+| As a site user I can view the shopping bag so that allows me to see which products were chosen                                                                                         | ![image of the shopping bag page](https://i.ibb.co/wpyhdn2/2024-10-02-11-59-36.png)               |
+| As a site user I can edit and remove items in my shopping bag so that allows me to manage the products I want to purchase                                                              | ![image of the shopping bag editing](https://i.ibb.co/rx0qT4p/2024-10-02-12-00-34.png)            |
+| As a site user I can enter my billing info so that allows me to pay for my order                                                                                                       | ![image of the billing info form](https://i.ibb.co/fMt2L8T/2024-10-02-12-03-43.png)               |
+| As a site user I can get an order confirmation so that ensure me that it was successful                                                                                                | ![image of the order confirmation page](https://i.ibb.co/JzQLB5c/2024-10-02-12-05-18.png)         |
+| As a site user I can receive an email after submitting an order so that allows me to have the confirmation of my order in my mailbox                                                   | ![image of the order confirmation email](https://i.ibb.co/JpDDxbf/2024-10-02-12-27-45.png)                                                        |
+| As a subscribed user I can view the lessons so that shows me purchased product                                                                                                         | ![image of the lessons section](https://i.ibb.co/VVWX6Lx/2024-10-02-12-06-59.png)                 |
+| As a subscribed user I can go to the next, previous lesson or back to all lessons so that allows me easily navigate                                                                    | ![image of the lesson navigation](https://i.ibb.co/SmKZ9C1/2024-10-02-12-07-26.png)               |
+| As a site user I can see custom 404 page instead of default one so that improves my user experience allowing to navigate to the other site sections                                    | ![image of custom 404 page](https://i.ibb.co/9gV8qjw/2024-10-02-12-07-48.png)                     |
+| As a site user I can subscribe to the newsletter so that allows me to receive site news and special offers                                                                             | ![image of the newsletter subscription section](https://i.ibb.co/4jYYVHJ/2024-10-02-12-08-09.png) |
+| As a site owner I can send newsletter to all subscribed users so that allows me to inform them about news, special etc.                                                                | ![image of the newsletter creation page](https://i.ibb.co/511b9pW/2024-10-02-12-09-48.png)        |
 
 
 ## Manual Testing
@@ -439,6 +605,15 @@ All python files passed CI Python Linter. All issues fixed:
 For the database I have used [ElephantSQL](https://www.elephantsql.com/) cloud service.
 It uses PostgreSQL 13.12 version
 
+To set up the database, sign-up with your GitHub account, then follow these steps:
+
+- Click **Create New Instance** to start a new database.
+- Provide a name (this is commonly the name of the project: lunar_glow).
+- Select the **Tiny Turtle (Free)** plan.
+- You can leave the **Tags** blank.
+- Select the **Region** and **Data Center** closest to you.
+- Once created, click on the new database name, where you can view the database URL and Password.
+
 ### Cloudinary media hosting
 For images I have used [Cloudinary](https://cloudinary.com/) which provides cloud based sollution
 
@@ -466,7 +641,121 @@ Heroku needs two additional files in order to deploy properly.
 - requirements.txt
 - Procfile
 
-Connect the git repository to Heroku and deploy from branch.
+You can install this project's **requirements** (where applicable) using:
+
+- `pip3 install -r requirements.txt`
+
+If you have your own packages that have been installed, then the requirements file needs updated using:
+
+- `pip3 freeze --local > requirements.txt`
+
+The **Procfile** can be created with the following command:
+
+- `echo web: gunicorn app_name.wsgi > Procfile`
+- *replace **app_name** with the name of your primary Django app name; the folder where settings.py is located*
+
+For Heroku deployment, follow these steps to connect your own GitHub repository to the newly created app:
+
+Either:
+
+- Select **Automatic Deployment** from the Heroku app.
+
+Or:
+
+- In the Terminal/CLI, connect to Heroku using this command: `heroku login -i`
+- Set the remote for Heroku: `heroku git:remote -a app_name` (replace *app_name* with your app name)
+- After performing the standard Git `add`, `commit`, and `push` to GitHub, you can now type:
+	- `git push heroku main`
+
+
+### Local Deployment
+
+This project can be cloned or forked in order to make a local copy on your own system.
+
+For either method, you will need to install any applicable packages found within the *requirements.txt* file.
+
+- `pip3 install -r requirements.txt`.
+
+You will need to create a new file called `env.py` at the root-level,
+and include the same environment variables listed above from the Heroku deployment steps.
+
+Sample `env.py` file:
+
+```python
+import os
+
+os.environ.setdefault("AWS_ACCESS_KEY_ID", "user's own value")
+os.environ.setdefault("AWS_SECRET_ACCESS_KEY", "user's own value")
+os.environ.setdefault("DATABASE_URL", "user's own value")
+os.environ.setdefault("EMAIL_HOST_PASS", "user's own value")
+os.environ.setdefault("EMAIL_HOST_USER", "user's own value")
+os.environ.setdefault("SECRET_KEY", "user's own value")
+os.environ.setdefault("STRIPE_PUBLIC_KEY", "user's own value")
+os.environ.setdefault("STRIPE_SECRET_KEY", "user's own value")
+os.environ.setdefault("STRIPE_WH_SECRET", "user's own value")
+
+# local environment only (do not include these in production/deployment!)
+os.environ.setdefault("DEBUG", "True")
+```
+
+Once the project is cloned or forked, in order to run it locally, you'll need to follow these steps:
+
+- Start the Django app: `python3 manage.py runserver`
+- Stop the app once it's loaded: `CTRL+C` or `⌘+C` (Mac)
+- Make any necessary migrations: `python3 manage.py makemigrations`
+- Migrate the data to the database: `python3 manage.py migrate`
+- Create a superuser: `python3 manage.py createsuperuser`
+- Load fixtures (if applicable): `python3 manage.py loaddata file-name.json` (repeat for each file)
+- Everything should be ready now, so run the Django app again: `python3 manage.py runserver`
+
+If you'd like to backup your database models, use the following command for each model you'd like to create a fixture for:
+
+- `python3 manage.py dumpdata your-model > your-model.json`
+- *repeat this action for each model you wish to backup*
+
+### Stripe payments
+
+This project uses [Stripe](https://stripe.com) to handle the ecommerce payments.
+
+Once you've created a Stripe account and logged-in, follow these steps to connect the payment system.
+
+- From your Stripe dashboard, click to expand the "Get your test API keys".
+- You'll have two keys here:
+	- `STRIPE_PUBLIC_KEY` = Publishable Key (starts with **pk**)
+	- `STRIPE_SECRET_KEY` = Secret Key (starts with **sk**)
+
+As a backup, in case users prematurely close the purchase-order page during payment, we can include Stripe Webhooks.
+
+- From your Stripe dashboard, click **Developers**, and select **Webhooks**.
+- From there, click **Add Endpoint**.
+	- `https://music-city-d688a3a37a92.herokuapp.com/checkout/wh/`
+- Click **receive all events**.
+- Click **Add Endpoint** to complete the process.
+- You'll have a new key here:
+	- `STRIPE_WH_SECRET` = Signing Secret (Wehbook) Key (starts with **wh**)
+
+### Gmail API
+
+This project uses [Gmail](https://mail.google.com) for account verification and order confirmation emails.
+
+Once you've created a Gmail (Google) account and logged-in, follow these steps to set up email server.
+
+- Click on the **Account Settings** (cog icon) in the top-right corner of Gmail.
+- Click on the **Accounts and Import** tab.
+- Within the section called "Change account settings", click on the link for **Other Google Account settings**.
+- From this new page, select **Security** on the left.
+- Select **2-Step Verification** to turn it on. (verify your password and account)
+- Once verified, select **Turn On** for 2FA.
+- Navigate back to the **Security** page, and you'll see a new option called **App passwords**.
+- This might prompt you once again to confirm your password and account.
+- Select **Mail** for the app type.
+- Select **Other (Custom name)** for the device type.
+	- Any custom name, such as "Django" or lunar_glow
+- You'll be provided with a 16-character password (API key).
+	- Save this somewhere locally, as you cannot access this key again later!
+	- `EMAIL_HOST_PASS` = user's 16-character API key
+	- `EMAIL_HOST_USER` = user's own personal Gmail email address
+
 
 ## Improvement
 <hr>
